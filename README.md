@@ -2,6 +2,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+For starting you must install node for your PC and please run in terminal "npm install" command
+
 In the project directory, you can run:
 
 ### `npm start`
