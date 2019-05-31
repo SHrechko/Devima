@@ -20,7 +20,15 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <div id="general_block_page" style={{ height: "3000px" }}>
+        <div
+          style={{
+            minWidth: "320px",
+            boxSizing: "border-box",
+            overflow: "hidden"
+            // width: "max-content"
+          }}
+          id="general_block_page"
+        >
           <Home />
           <Services />
           <AboutUs />

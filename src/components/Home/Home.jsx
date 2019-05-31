@@ -48,7 +48,10 @@ const styles = theme => ({
     backgroundPositionY: "bottom",
     backgroundRepeatX: "no-repeat",
     backgroundRepeatY: "no-repeat",
-    boxSizing: "boder-box"
+    boxSizing: "boder-box",
+    backgroundSize: "cover",
+    position: "relative",
+    minHeight: "320px"
   },
   flexCenter: {
     height: "calc(100% - 140px)",
@@ -62,12 +65,19 @@ const styles = theme => ({
     flexDirection: "row",
     width: "100%",
     margin: `0 ${theme.default.space * 10}px 0 ${theme.default.space * 20}px`,
-    position: "relative"
+    position: "relative",
+    "@media (max-width: 767px)": {
+      margin: "0 20px",
+      position: "initial "
+    }
   },
   bodyLinks: {
     display: "flex",
     flexDirection: "column",
-    margin: `auto ${theme.default.space * 2}px 0`
+    margin: `auto ${theme.default.space * 2}px 0`,
+    "@media (max-width: 767px)": {
+      display: "none"
+    }
   },
   link: {
     backgroundPositionX: "center",
@@ -82,15 +92,23 @@ const styles = theme => ({
     height: "max-content",
     width: "100%",
     margin: `0 ${theme.default.space * 2}px`,
-    color: "white"
+    color: "white",
+    "@media (max-width: 767px)": {
+      width: "auto",
+      margin: "0"
+    }
   },
   title: {
     fontSize: "45px",
     lineHeight: "50px",
     marginTop: theme.default.space * 2,
-    letterSpacing: "-1.69px"
+    letterSpacing: "-1.69px",
+    "@media (max-width: 768px)": {
+      maxWidth: "429px"
+    }
   },
   upTitle: {
+    width: "max-content",
     fontSize: "20px",
     lineHeight: "50px",
     letterSpacing: "-0.75px",
@@ -101,7 +119,10 @@ const styles = theme => ({
     lineHeight: "25px",
     fontWeight: "400",
     width: "400px",
-    paddingTop: theme.default.space * 4
+    paddingTop: theme.default.space * 4,
+    "@media (max-width: 768px)": {
+      width: "auto"
+    }
   },
   startButton: {
     width: "175px",
@@ -139,30 +160,45 @@ const styles = theme => ({
     margin: "0 auto",
     position: "relative",
     zIndex: "900",
-    backgroundColor: "#ffffff"
+    backgroundColor: "#ffffff",
+    "@media (max-width: 767px)": {
+      display: "none"
+    }
   },
   scrollDown: {
     transform: "translate(0, -50%) rotate(90deg)",
     color: "#979797",
-    fontSize: "12px",
-    fontWeight: "500",
-    letterSpacing: "4.29px",
-    lineHeight: "24px",
     width: "max-content",
     height: "max-content",
     position: "absolute",
     top: "50%",
-    right: "0"
+    right: "0",
+    "@media (max-width: 1024px)": {
+      color: "#ffffff",
+      right: "-70px"
+    },
+    "@media (max-width: 767px)": {
+      top: "100px",
+      right: "-50px",
+      zIndex: "1200"
+    }
   },
   downLink: {
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    fontSize: "12px",
+    fontWeight: "500",
+    letterSpacing: "4.29px",
+    lineHeight: "24px"
   },
   linear: {
     marginTop: "3px",
     width: "50px",
     height: "1px",
-    backgroundColor: "#979797"
+    backgroundColor: "#979797",
+    "@media (max-width: 1024px)": {
+      backgroundColor: "#ffffff"
+    }
   },
   arrow: {
     backgroundImage: `url(${FillSvg})`,
