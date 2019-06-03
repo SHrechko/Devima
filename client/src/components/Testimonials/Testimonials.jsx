@@ -216,7 +216,9 @@ const styles = theme => ({
 class Testimonials extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showBlock: window.innerWidth >= 768
+    };
   }
 
   componentDidMount() {

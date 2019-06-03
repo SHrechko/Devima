@@ -9,6 +9,7 @@ import Link from "../link/link";
 import FB from "../../assets/fb.svg";
 import UP from "../../assets/up.svg";
 import LN from "../../assets/ln.svg";
+import axios from "axios";
 
 const styles = theme => ({
   contacts: {
@@ -372,14 +373,30 @@ class Contacts extends Component {
   }
   submitForm = e => {
     e.preventDefault();
-    ReactDOM.findDOMNode(this._formForSubmit).style.display = "none";
-    ReactDOM.findDOMNode(this.beforeSubmit).style.display = "inline-block";
-
-    setTimeout(() => {
-      this.setState({
-        showForm: false
+    const values = {
+      name: this.nameValue.value,
+      email: this.emailValue.value,
+      message: this.messageValue.value
+    };
+    console.log(values);
+    axios
+      .post("/send-email", values)
+      .then(res => {
+        if (res.data.success) {
+          ReactDOM.findDOMNode(this._formForSubmit).style.display = "none";
+          ReactDOM.findDOMNode(this.beforeSubmit).style.display =
+            "inline-block";
+          setTimeout(() => {
+            this.setState({
+              showForm: false
+            });
+          });
+        }
+      })
+      .catch(error => {
+        // handle error
+        console.log(error);
       });
-    });
   };
 
   backToHome = e => {
@@ -408,6 +425,7 @@ class Contacts extends Component {
           >
             <div className={classes.textFieldBlock}>
               <input
+                ref={node => (this.nameValue = node)}
                 type="text"
                 placeholder=" "
                 name="name"
@@ -418,6 +436,7 @@ class Contacts extends Component {
             <div className={classes.textFieldBlock}>
               <input
                 type="email"
+                ref={node => (this.emailValue = node)}
                 placeholder=" "
                 name="email"
                 required="required"
@@ -428,6 +447,7 @@ class Contacts extends Component {
               <textarea
                 type="text"
                 placeholder=" "
+                ref={node => (this.messageValue = node)}
                 name="message"
                 required="required"
               />
