@@ -355,30 +355,35 @@ const styles = theme => ({
     height: "40px",
     backgroundColor: "#ffffff",
     opacity: "0.21"
+  },
+  attachedFileName: {
+    color: "#5535b8",
+    margin: "6px 6px 0 0",
+    display: "inline-block",
+    width: "max-content",
+    width: "max-content",
+    float: "right"
   }
 });
-
-const successShow = {
-  display: "inline-block",
-  opacity: "1",
-  transition: ".5s"
-};
 
 class Contacts extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showForm: true
+      showForm: true,
+      fileName: ""
     };
   }
   submitForm = e => {
     e.preventDefault();
+    console.log(this.state.fileName);
     const values = {
       name: this.nameValue.value,
       email: this.emailValue.value,
-      message: this.messageValue.value
+      message: this.messageValue.value,
+      attach: this.attachValue.value,
+      attachedFileName: this.state.fileName
     };
-    console.log(values);
     axios
       .post("/send-email", values)
       .then(res => {
@@ -399,20 +404,42 @@ class Contacts extends Component {
       });
   };
 
+  onChange = e => {
+    switch (e.target.name) {
+      case "attach":
+        if (e.target.files.length > 0) {
+          // Accessed .name from file
+          this.setState({ fileName: e.target.files[0].name });
+        }
+        break;
+      default:
+        this.setState({ [e.target.name]: e.target.value });
+    }
+  };
+
   backToHome = e => {
     ReactDOM.findDOMNode(this.beforeSubmit).style.display = "none";
     ReactDOM.findDOMNode(this._formForSubmit).style.display = "flex";
-
+    ReactDOM.findDOMNode(this.nameValue).value = "";
+    ReactDOM.findDOMNode(this.emailValue).value = "";
+    ReactDOM.findDOMNode(this.messageValue).value = "";
+    ReactDOM.findDOMNode(this.attachValue).value = "";
     setTimeout(() => {
       this.setState({
-        showForm: true
+        showForm: true,
+        fileName: ""
       });
-    });
+    }, 0);
   };
 
   render() {
-    const { showForm } = this.state;
+    const { showForm, fileName } = this.state;
     const { classes } = this.props;
+    const file = fileName ? (
+      <span className={classes.attachedFileName}>{fileName}</span>
+    ) : (
+      ""
+    );
     return (
       <div id="contacts" className={classes.contacts}>
         <h1 className={classes.title}>Contact us</h1>
@@ -457,6 +484,9 @@ class Contacts extends Component {
               <div className={classes.attach}>
                 <input
                   type="file"
+                  name="attach"
+                  onChange={this.onChange.bind(this)}
+                  ref={node => (this.attachValue = node)}
                   style={{
                     width: "100%",
                     height: "100%",
@@ -469,6 +499,7 @@ class Contacts extends Component {
                 <img src={attach} />
                 <span>Attach a file</span>
               </div>
+              <label htmlFor="file">{file}</label>
             </div>
             <button type="submit" className={classes.sendButton}>
               <span>Send</span>

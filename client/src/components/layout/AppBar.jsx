@@ -9,7 +9,6 @@ import classNames from "classnames";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
-import { link } from "fs";
 
 library.add(faAlignJustify);
 
@@ -71,7 +70,16 @@ const styles = theme => ({
     color: "white",
     fontFamily: "Roboto",
     fontSize: "17px",
-    fontWeight: "400"
+    fontWeight: "400",
+    borderTop: "1px solid rgba(0,0,0,0)",
+    borderBottom: "1px solid rgba(0,0,0,0)",
+    "@media (min-width: 769px)": {
+      padding: "5px 0"
+    },
+    "&:hover": {
+      borderTop: "1px solid #ffffff",
+      borderBottom: "1px solid #ffffff"
+    }
   },
   devimaWhite: {
     backgroundImage: `url(${devimaWhite})`
@@ -153,7 +161,6 @@ class AppBar extends Component {
     document.addEventListener("scroll", this.headerFixer);
     const links = document.querySelectorAll("#links > span");
     for (let i = 0; i < links.length; i++) {
-      console.log(links[i]);
       links[i].addEventListener("click", this.closeMenu);
     }
   }

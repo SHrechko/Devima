@@ -9,8 +9,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 const tabs = [
   { id: "0", value: "first" },
-  { id: "0", value: "second" },
-  { id: "0", value: "third" }
+  { id: "1", value: "second" },
+  { id: "2", value: "third" }
 ];
 
 const styles = theme => ({

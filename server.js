@@ -44,8 +44,16 @@ app.post("/send-email", (req, res) => {
     to: "test@gmail.com", // email of receivers
     subject: "Message from Devima servise user", // Subject line
     text: `${req.body.message}` // plain text body
-    // html: `<b>${req.body.message}</b>` // html body
+    // html: `<b>${req.body.message}</b>`, // html body
   };
+  if (req.body.attachedFileName && req.body.attachedFileName !== "") {
+    mailOptions["attachments"] = [
+      {
+        filename: `${req.body.attachedFileName}`,
+        content: req.body.attach
+      }
+    ];
+  }
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
