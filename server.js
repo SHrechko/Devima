@@ -31,8 +31,8 @@ app.post("/send-email", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: "sorrowww150@gmail.com",
-      pass: "60404930sorrowww"
+      user: "youremail@gmail.com", //input your email
+      pass: "your mail password" //input your password by email
     },
     tls: {
       rejectUnauthorized: true
