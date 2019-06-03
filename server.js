@@ -41,7 +41,7 @@ app.post("/send-email", (req, res) => {
 
   let mailOptions = {
     from: `"${req.body.name}" <${req.body.email}>`, // sender address
-    to: "sorrowww150@gmail.com", // list of receivers
+    to: "test@gmail.com", // email of receivers
     subject: "Message from Devima servise user", // Subject line
     text: `${req.body.message}` // plain text body
     // html: `<b>${req.body.message}</b>` // html body
