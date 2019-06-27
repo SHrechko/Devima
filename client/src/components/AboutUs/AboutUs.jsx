@@ -90,7 +90,7 @@ const styles = {
     width: "max-content",
     margin: "0 auto",
     "@media screen and (max-width: 1023px)": {
-      marginLeft: "50px"
+      marginLeft: "auto"
     },
     "@media screen and (max-width: 767px)": {
       margin: "0 20px",
@@ -104,12 +104,14 @@ const styles = {
     color: "#ffffff",
     fontSize: "55px",
     fontWeight: "400",
-    marginTop: "0",
+    marginTop: "35px",
+    marginLeft: "75px",
     "@media (max-width: 1024)": {
       fontSize: "45px"
     },
     "@media (max-width: 767px)": {
-      fontSize: "25px"
+      fontSize: "25px",
+      marginLeft: "20px"
     }
   },
   contentBlocks: {
@@ -117,7 +119,7 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     width: "max-content",
-    margin: "0 0 0 80px",
+    margin: "0",
     "@media (max-width: 767px)": {
       display: "none"
     }
@@ -232,7 +234,7 @@ const styles = {
     }
   },
   carousel: {
-    height: "250px",
+    height: "230px",
     width: "100%",
     display: "flex",
     flexDirection: "row",
@@ -240,8 +242,15 @@ const styles = {
     "@media (min-width: 768px)": {
       display: "none"
     },
+    "@media (min-width: 600px)": {
+      height: "130px",
+      paddingBottom: "20px",
+      "& div": {
+        maxHeight: "130px"
+      }
+    },
     "& div": {
-      height: "250px",
+      height: "230px",
       width: "100%"
     }
   },
@@ -281,8 +290,8 @@ class AboutUs extends Component {
     return (
       <div id="about_us" className={classes.aboutUs}>
         <div id="about_us" className={classes.body}>
+          <h1 className={classes.aboutUsTitle}>Our Approach</h1>
           <div className={classes.bodyWrapper}>
-            <h1 className={classes.aboutUsTitle}>Our Approach</h1>
             <Slider {...settings}>
               <div className={classes.aboutUsContent}>
                 <div className={classes.contentTitle}>
@@ -302,9 +311,32 @@ class AboutUs extends Component {
                   <span>Individual approach to the client</span>
                 </div>
                 <p className={classes.contentText}>
-                  Our company delivers a personalized approach, which is based
-                  on understanding the customer desires and the required
-                  resource.
+                  Our company does full quality control at all stages of project
+                  development. It helps to create the best product for our
+                  clients.
+                </p>
+              </div>
+              <div className={classes.aboutUsContent}>
+                <div className={classes.contentTitle}>
+                  <span className={classes.numberCircle}>03</span>
+                  <span>Individual approach to the client</span>
+                </div>
+                <p className={classes.contentText}>
+                  We deliver a team of professionals who can meet the needs of
+                  our clients to the smallest details and timely perform their
+                  work. We love non-standard and difficult challenging projects
+                  which help us to grow.
+                </p>
+              </div>
+              <div className={classes.aboutUsContent}>
+                <div className={classes.contentTitle}>
+                  <span className={classes.numberCircle}>04</span>
+                  <span>Individual approach to the client</span>
+                </div>
+                <p className={classes.contentText}>
+                  We use only the newest technologies during the work process to
+                  create a product that fully satisfied the client and meet the
+                  latest trends on the marketplace.
                 </p>
               </div>
             </Slider>
@@ -342,7 +374,7 @@ class AboutUs extends Component {
               <div className={classes.aboutUsContent}>
                 <div className={classes.circle} />
                 <div className={classes.contentTitle}>
-                  <span className={classes.numberCircle}>01</span>
+                  <span className={classes.numberCircle}>03</span>
                   <span>Professional and motivated team</span>
                 </div>
                 <p className={classes.contentText}>
@@ -357,7 +389,7 @@ class AboutUs extends Component {
                   className={classNames(classes.circle, classes.leftCircle)}
                 />
                 <div className={classes.contentTitle}>
-                  <span className={classes.numberCircle}>02</span>
+                  <span className={classes.numberCircle}>04</span>
                   <span>The latest technologies</span>
                 </div>
                 <p className={classes.contentText}>
@@ -375,7 +407,7 @@ class AboutUs extends Component {
             <span className={classes.statisticName}>Completed Projects</span>
           </div>
           <div className={classes.statisticBlock}>
-            <h1 className={classes.statisticNumbers}>15</h1>
+            <h1 className={classes.statisticNumbers}>480</h1>
             <span className={classes.statisticName}>Hours per month</span>
           </div>
           <div className={classes.statisticBlock}>

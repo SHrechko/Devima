@@ -51,14 +51,14 @@ const styles = theme => ({
   },
   arrows: {
     height: "50px",
+    background: "#ffffff",
     boxSizing: "border-box",
     position: "absolute",
     width: "60%",
     right: "0",
     bottom: "0",
     display: "inline-block",
-    border: "solid rgba(0, 0, 0, 0.1)",
-    borderWidth: "2px 0 0 2px",
+    border: "2px solid rgba(0, 0, 0, 0.1)",
     "@media screen and (max-width: 1024px)": {
       height: "40px"
     },

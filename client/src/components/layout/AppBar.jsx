@@ -13,6 +13,14 @@ import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 library.add(faAlignJustify);
 
 const styles = theme => ({
+  openedAppBar: {
+    height: "100vh",
+    width: "100vw",
+    bottom: "0",
+    position: "fixed",
+    zIndex: "1300",
+    backgroundColor: "#5535b8"
+  },
   headerLinks: {
     boxSizing: "border-box",
     display: "flex",
@@ -28,6 +36,7 @@ const styles = theme => ({
       top: "25%",
       width: "100%",
       flexDirection: "column",
+      alignItems: "center",
       right: 0
     },
     "& > *": {
@@ -68,16 +77,19 @@ const styles = theme => ({
   linkScroll: {
     textAlign: "center",
     color: "white",
-    fontFamily: "Roboto",
     fontSize: "17px",
     fontWeight: "400",
+    width: "max-content",
+    minWidth: "max-content",
     borderTop: "1px solid rgba(0,0,0,0)",
     borderBottom: "1px solid rgba(0,0,0,0)",
     "@media (min-width: 769px)": {
       padding: "5px 0"
     },
     "&:hover": {
-      borderTop: "1px solid #ffffff",
+      "@media (max-width: 768px)": {
+        borderTop: "1px solid #ffffff"
+      },
       borderBottom: "1px solid #ffffff"
     }
   },
@@ -178,19 +190,7 @@ class AppBar extends Component {
     return (
       <div
         id="header"
-        style={
-          opened
-            ? {
-                height: "100vh",
-                width: "100vw",
-                bottom: "0",
-                position: "fixed",
-                zIndex: "1000",
-                backgroundColor: "#5535b8"
-              }
-            : {}
-        }
-        className="appBar"
+        className={classNames("appBar", { [classes.openedAppBar]: opened })}
       >
         <div onClick={this.openClick} className={classes.menuButton}>
           <FontAwesomeIcon

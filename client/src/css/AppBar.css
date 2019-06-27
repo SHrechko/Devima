@@ -42,6 +42,20 @@
   background-color: #ffffff;
 }
 
+.fixed #links {
+  height: 100%;
+}
+
+.fixed #links span {
+  padding: 0;
+  line-height: 90px;
+}
+
+.fixed #links span:hover {
+  color: #2f29d0;
+  border-bottom: 1.5px solid #2f29d0 !important;
+}
+
 .fixed div span {
   color: black;
 }

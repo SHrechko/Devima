@@ -51,7 +51,7 @@ const styles = theme => ({
     boxSizing: "boder-box",
     backgroundSize: "cover",
     position: "relative",
-    minHeight: "320px"
+    minHeight: "670px"
   },
   flexCenter: {
     height: "calc(100% - 140px)",
@@ -101,18 +101,10 @@ const styles = theme => ({
   title: {
     fontSize: "45px",
     lineHeight: "50px",
-    marginTop: theme.default.space * 2,
     letterSpacing: "-1.69px",
     "@media (max-width: 768px)": {
       maxWidth: "429px"
     }
-  },
-  upTitle: {
-    width: "max-content",
-    fontSize: "20px",
-    lineHeight: "50px",
-    letterSpacing: "-0.75px",
-    fontWeight: "400"
   },
   subTitle: {
     fontSize: "16px",
@@ -239,7 +231,7 @@ class Home extends Component {
               <div className={classNames(classes.link, classes.ln)} />
             </span>
             <div className={classes.bodyContent}>
-              <div className={classes.upTitle}>-What we do</div>
+              {/* <div className={classes.upTitle}>-What we do</div> */}
               <div className={classes.title}>
                 Implement Your great ideas <br />
                 into real life

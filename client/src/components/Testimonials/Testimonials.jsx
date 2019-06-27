@@ -3,9 +3,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import injectSheet from "react-jss";
 import classNames from "classnames";
-import FB from "../../assets/FbGray.svg";
-import IN from "../../assets/InGray.svg";
+import UP from "../../assets/upwork_static.png";
+import UPActive from "../../assets/upwork_active.png";
 import OurLeadership from "../../assets/OurLeadership.svg";
+import Sergiy from "../../assets/Sergiy.png";
+import Maksym from "../../assets/Maksym.png";
+import Andriy from "../../assets/Andriy.png";
+import David from "../../assets/David.png";
+import Dean from "../../assets/Dean.png";
+import Nerijus from "../../assets/Nerijus.png";
+import Thiago from "../../assets/Thiago.png";
 
 import Slider from "react-slick";
 
@@ -72,7 +79,7 @@ const styles = theme => ({
   photo: {
     backgraund: "gray",
     width: "80px",
-    height: "47px",
+    height: "60px",
     marginRight: "9px"
   },
   carouselBlock: {
@@ -84,7 +91,7 @@ const styles = theme => ({
   },
   carouselItem: {
     margin: "10px 0 30px",
-    padding: "25px 16px 0",
+    padding: "25px 16px 5px",
     height: "calc(100% - 65px)",
     boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)",
     overflow: "hidden",
@@ -179,14 +186,12 @@ const styles = theme => ({
   leadershipTitle: {
     marginTop: "14px",
     color: "#4a4a4a",
-    fontFamily: "Roboto",
     fontSize: "16px",
     fontWeight: "900"
   },
   leadershipSub: {
     marginTop: "0",
     color: "#5535b8",
-    fontFamily: "Roboto Medium",
     fontSize: "14px",
     fontWeight: "500"
   },
@@ -196,8 +201,8 @@ const styles = theme => ({
     flexDirection: "row",
     justifyContent: "center",
     "& > a": {
-      width: "18px",
-      height: "18px",
+      width: "20px",
+      height: "20px",
       backgroundPositionX: "center",
       backgroundPositionY: "center",
       backgroundRepeatX: "no-repeat",
@@ -209,9 +214,89 @@ const styles = theme => ({
       }
     }
   },
-  FbIcon: { background: `url(${FB})` },
-  InIcon: { background: `url(${IN})` }
+  UpIcon: {
+    backgroundImage: `url(${UP})`,
+    "&:hover": {
+      backgroundImage: `url(${UPActive})`
+    }
+  },
+  fab: {
+    color: "#9b9b9b",
+    "&:hover": {
+      color: "#5535b8"
+    }
+  }
 });
+
+const leaders = [
+  {
+    id: 0,
+    name: "Sergiy Kushnir",
+    sub: "Tech Lead, co-founder",
+    img: Sergiy,
+    email: "skushnir.lviv@gmail.com",
+    service: "https://www.linkedin.com/in/skushnirlviv/"
+  },
+  {
+    id: 1,
+    name: "Maksym Fetych",
+    sub: "Design Lead, co-founder",
+    img: Maksym,
+    email: "andriy.martynyshyn@gmail.com",
+    service: "https://www.upwork.com/fl/maksym"
+  },
+  {
+    id: 2,
+    name: "Andrew Martynyshyn",
+    sub: "Tech Lead, Consultant",
+    img: Andriy,
+    email: "mak.sym0202@gmail.com",
+    service: "https://www.linkedin.com/in/andriym/"
+  }
+];
+
+const clients = [
+  {
+    id: 0,
+    name: "Dean Payne",
+    sub: "Digital Project Manager at African Safari Group",
+    txt:
+      "Devima always does fantastic work for us. Their professionalism" +
+      "and flexibility were the key factors in the success of our" +
+      "project along with great communication and delivery.",
+    img: Dean
+  },
+  {
+    id: 1,
+    name: "Nerijus Mikolaitis",
+    sub: "Key Account Manager at Gomingo.com",
+    txt:
+      "Exceptional team with high quality and commitment. Once again" +
+      "thanks for being on this project and helping deliver on time and" +
+      "in a professional manner.",
+    img: Nerijus
+  },
+  {
+    id: 2,
+    name: "Thiago Custódio",
+    sub: "CEO & Partner. MNEO Ensino e Consultoria",
+    txt:
+      "Devima is one of the best team we have ever work with. Their" +
+      "analysis skills are at a high level. Their work always contained" +
+      "the extra step that made the results outstanding.",
+    img: Thiago
+  },
+  {
+    id: 3,
+    name: "David Bollt",
+    sub: "Editor in Chief at Model Society Magazine",
+    txt:
+      "The Devima was easy to deal with from start to finish and quick" +
+      "to respond to any questions we had. We would have no hesitation" +
+      "in working with them again.",
+    img: David
+  }
+];
 
 class Testimonials extends Component {
   constructor(props) {
@@ -315,70 +400,24 @@ class Testimonials extends Component {
       <div id="testimonials">
         <div className={classes.title}>Testimonials</div>
         <Slider {...settings}>
-          <div className={classes.carouselBlock}>
-            <div className={classes.carouselItem}>
-              <div>
-                <img src="#" className={classes.photo} alt="Photo" />
-                <div className={classes.headingText}>
-                  <div>Dean Payne</div>
-                  <div>Digital Project Manager at African Safari Group</div>
+          {clients.map(client => (
+            <div id={client.id} className={classes.carouselBlock}>
+              <div className={classes.carouselItem}>
+                <div>
+                  <img
+                    src={client.img}
+                    className={classes.photo}
+                    alt={client.name}
+                  />
+                  <div className={classes.headingText}>
+                    <div>{client.name}</div>
+                    <div>{client.sub}</div>
+                  </div>
                 </div>
+                <p className={classes.bodyText}>{client.txt}</p>
               </div>
-              <p className={classes.bodyText}>
-                Devima always does fantastic work for us. Their professionalism
-                and flexibility were the key factors in the success of our
-                project along with great communication and delivery.
-              </p>
             </div>
-          </div>
-          <div className={classes.carouselBlock}>
-            <div className={classes.carouselItem}>
-              <div>
-                <img src="#" className={classes.photo} alt="Photo" />
-                <div className={classes.headingText}>
-                  <div>Nerijus Mikolaitis</div>
-                  <div>Key Account Manager at Gomingo.com</div>
-                </div>
-              </div>
-              <p className={classes.bodyText}>
-                Exceptional team with high quality and commitment. Once again
-                thanks for being on this project and helping deliver on time and
-                in a professional manner.
-              </p>
-            </div>
-          </div>
-          <div className={classes.carouselBlock}>
-            <div className={classes.carouselItem}>
-              <div>
-                <img src="#" className={classes.photo} alt="Photo" />
-                <div className={classes.headingText}>
-                  <div>Thiago Custódio</div>
-                  <div>CEO & Partner. MNEO Ensino e Consultoria</div>
-                </div>
-              </div>
-              <p className={classes.bodyText}>
-                Devima is one of the best team we have ever work with. Their
-                analysis skills are at a high level. Their work always contained
-                the extra step that made the results outstanding.
-              </p>
-            </div>
-          </div>
-          <div className={classes.carouselBlock}>
-            <div className={classes.carouselItem}>
-              <div>
-                <img src="#" className={classes.photo} alt="Photo" />
-                <div className={classes.headingText}>
-                  <div>David Bollt</div>
-                  <div>Editor in Chief at Model Society Magazine</div>
-                </div>
-              </div>
-              <p className={classes.bodyText}>
-                The Devima was easy to deal with from start to finish and quick
-                to respond to any questions we had. We would have no hesitation
-                in working with them again.
-              </p>
-            </div>
-          </div>
+          ))}
         </Slider>
         <div className={classNames(classes.title, classes.ourLeadershipTitle)}>
           Our leadership team
@@ -390,79 +429,96 @@ class Testimonials extends Component {
               classes.testimonialsBackground
             )}
           >
-            <div className={classes.ourLeadershipItem}>
-              <img
-                src=""
-                className={classes.leadershipImg}
-                alt="Leadership image"
-              />
-              <div className={classes.leadershipTitle}> title</div>
-              <div className={classes.leadershipSub}>sub</div>
-              <div className={classes.linkIconBlock}>
-                <a href="#" className={classes.FbIcon} />
-                <a href="#" className={classes.InIcon} />
+            {leaders.map((leader, index) => (
+              <div
+                key={leader.id}
+                className={classNames(classes.ourLeadershipItem, {
+                  [classes.centerLeaders]: index === 1
+                })}
+              >
+                <img
+                  src={leader.img}
+                  className={classes.leadershipImg}
+                  alt={leader.name}
+                />
+                <div className={classes.leadershipTitle}>{leader.name}</div>
+                <div className={classes.leadershipSub}>{leader.sub}</div>
+                <div className={classes.linkIconBlock}>
+                  <a href={`mailto:${leader.email}`}>
+                    <i
+                      className={classNames(
+                        "fab",
+                        "fa",
+                        "fa-envelope",
+                        classes.fab
+                      )}
+                    />
+                  </a>
+
+                  {index !== 1 ? (
+                    <a href={leader.service} target="__blank">
+                      <i
+                        className={classNames(
+                          "fab",
+                          "fa-linkedin-in",
+                          classes.fab
+                        )}
+                      />
+                    </a>
+                  ) : (
+                    <a
+                      href={leader.service}
+                      target="__blank"
+                      className={classes.UpIcon}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-            <div
-              className={classNames(
-                classes.ourLeadershipItem,
-                classes.centerLeaders
-              )}
-            >
-              <img
-                src=""
-                className={classes.leadershipImg}
-                alt="Leadership image"
-              />
-              <div className={classes.leadershipTitle}> title</div>
-              <div className={classes.leadershipSub}>sub</div>
-              <div className={classes.linkIconBlock}>
-                <a href="#" className={classes.FbIcon} />
-                <a href="#" className={classes.InIcon} />
-              </div>
-            </div>
-            <div className={classes.ourLeadershipItem}>
-              <img
-                src=""
-                className={classes.leadershipImg}
-                alt="Leadership image"
-              />
-              <div className={classes.leadershipTitle}> title</div>
-              <div className={classes.leadershipSub}>sub</div>
-              <div className={classes.linkIconBlock}>
-                <a href="#" className={classes.FbIcon} />
-                <a href="#" className={classes.InIcon} />
-              </div>
-            </div>
+            ))}
           </div>
         ) : (
           <Slider {...settingsLeadership}>
-            <div className={classes.ourLeadershipItem}>
-              <img
-                src=""
-                className={classes.leadershipImg}
-                alt="Leadership image"
-              />
-              <div className={classes.leadershipTitle}> title</div>
-              <div className={classes.leadershipSub}>sub</div>
-              <div className={classes.linkIconBlock}>
-                <a href="#" className={classes.FbIcon} />
-                <a href="#" className={classes.InIcon} />
+            {leaders.map((leader, index) => (
+              <div key={leader.id} className={classes.ourLeadershipItem}>
+                <img
+                  src={leader.img}
+                  className={classes.leadershipImg}
+                  alt={leader.name}
+                />
+                <div className={classes.leadershipTitle}>{leader.name}</div>
+                <div className={classes.leadershipSub}>{leader.sub}</div>
+                <div className={classes.linkIconBlock}>
+                  <a href={`mailto:${leader.email}`}>
+                    <i
+                      className={classNames(
+                        "fab",
+                        "fa",
+                        "fa-envelope",
+                        classes.fab
+                      )}
+                    />
+                  </a>
+
+                  {index !== 1 ? (
+                    <a href={leader.service} target="__blank">
+                      <i
+                        className={classNames(
+                          "fab",
+                          "fa-linkedin-in",
+                          classes.fab
+                        )}
+                      />
+                    </a>
+                  ) : (
+                    <a
+                      href={leader.service}
+                      target="__blank"
+                      className={classes.UpIcon}
+                    />
+                  )}
+                </div>
               </div>
-            </div>
-            <div className={classes.ourLeadershipItem}>
-              <img
-                src=""
-                className={classes.leadershipImg}
-                alt="Leadership image"
-              />
-              <div className={classes.leadershipTitle}> title</div>
-              <div className={classes.leadershipSub}>sub</div>
-              <div className={classes.linkIconBlock}>
-                <a href="#" className={classes.FbIcon} />
-                <a href="#" className={classes.InIcon} />
-              </div>
-            </div>
+            ))}
           </Slider>
         )}
       </div>

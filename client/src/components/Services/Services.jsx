@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
 import classNames from "classnames";
-import WebDev from "../../assets/10-layers.svg";
-import WebDevWhite from "../../assets/9-layers-white.svg";
-import Mobile from "../../assets/mobile-development.svg";
-import MobileWhite from "../../assets/mobile-development-white.svg";
-import UxUiDesign from "../../assets/14-layers.svg";
-import UxUiDesignWhite from "../../assets/14-layers-white.svg";
+import WebDev from "../../assets/web_development42.svg";
+import WebDevWhite from "../../assets/web_development4_white.svg";
+import Mobile from "../../assets/mobile_development2.svg";
+import MobileWhite from "../../assets/mobile_development8_white.svg";
+import UxUiDesign from "../../assets/design2.svg";
+import UxUiDesignWhite from "../../assets/design2-white.svg";
 import DedicatedTeam from "../../assets/12-layers.svg";
 import DedicatedTeamWhite from "../../assets/11-layers-white.svg";
 
@@ -65,6 +65,7 @@ const styles = theme => ({
   },
   cardsBlock: {
     marginTop: "70px",
+    minHeight: "400px",
     "@media (max-width: 1023px)": {
       maxWidth: "661px",
       width: "auto",
@@ -100,7 +101,7 @@ const styles = theme => ({
   card: {
     width: "250px",
     height: "max-content",
-    transition: "margin 1s",
+    transition: "margin 0.3s",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -235,8 +236,7 @@ class Services extends Component {
                 <img
                   className={classes.cardImg}
                   src={activeCard === "card1" ? WebDevWhite : WebDev}
-                  width="75px"
-                  height="75px"
+                  width="100px"
                   alt="Web Development"
                 />
                 <span className={classes.cardTitle}>Web Development</span>
@@ -256,8 +256,7 @@ class Services extends Component {
               >
                 <img
                   className={classes.cardImg}
-                  width="75px"
-                  height="75px"
+                  width="100px"
                   src={activeCard === "card2" ? MobileWhite : Mobile}
                   alt="Mobile development"
                 />
@@ -278,8 +277,7 @@ class Services extends Component {
               >
                 <img
                   className={classes.cardImg}
-                  width="75px"
-                  height="75px"
+                  width="100px"
                   src={activeCard === "card3" ? UxUiDesignWhite : UxUiDesign}
                   alt="Ux/Ui Design"
                 />
@@ -300,8 +298,7 @@ class Services extends Component {
               >
                 <img
                   className={classes.cardImg}
-                  width="75px"
-                  height="75px"
+                  width="100px"
                   src={
                     activeCard === "card4" ? DedicatedTeamWhite : DedicatedTeam
                   }

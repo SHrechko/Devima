@@ -28,7 +28,6 @@ const styles = theme => ({
     display: "inline-block",
     margin: "51px 0 25px 71px",
     color: "#5535b8",
-    fontFamily: "Abril Fatface",
     fontSize: "55px",
     fontWeight: "400",
     "@media (max-width: 1023)": {
@@ -66,7 +65,7 @@ const styles = theme => ({
     width: "100%",
     height: "100%",
     background:
-      "radial-gradient(farthest-corner at 592px 0px, #5535b8 0% 12%, #ffffff 12% 100%)"
+      "radial-gradient(farthest-corner at 592px 0px, #5535b8 0% 11.7%, #ffffff 12% 100%)"
   },
   textFieldBlock: {
     position: "relative",
@@ -120,7 +119,6 @@ const styles = theme => ({
     "& > label": {
       transition: ".5s",
       color: "#5535b8",
-      fontFamily: "Roboto",
       fontSize: "16px",
       fontWeight: "400",
       position: "absolute",
@@ -199,13 +197,11 @@ const styles = theme => ({
   },
   successMessage: {
     color: "#ffffff",
-    fontFamily: "Roboto Medium",
     fontSize: "24px",
     fontWeight: "500",
     margin: "0",
     "& + sub": {
       color: "#ffffff",
-      fontFamily: "Roboto",
       fontSize: "18px",
       fontWeight: "400",
       margin: "0"
@@ -234,7 +230,6 @@ const styles = theme => ({
     },
     "& > span": {
       color: "#5535b8",
-      fontFamily: "Roboto",
       fontSize: "12px",
       fontWeight: "400"
     }
@@ -262,7 +257,6 @@ const styles = theme => ({
     }
   },
   deveema: {
-    fontFamily: "Abril Fatface",
     fontSize: "24px",
     fontWeight: "400",
     display: "block",
@@ -277,7 +271,6 @@ const styles = theme => ({
   deveemaInf: {
     width: "max-content",
     margin: "0 auto",
-    fontFamily: "Roboto",
     fontSize: "12px",
     fontWeight: "400",
     "@media (min-width: 768px) and (max-width: 1024px)": {
@@ -409,7 +402,14 @@ class Contacts extends Component {
       case "attach":
         if (e.target.files.length > 0) {
           // Accessed .name from file
-          this.setState({ fileName: e.target.files[0].name });
+          let names = "";
+          for (let i = 0; i < e.target.files.length; i++) {
+            names += e.target.files[i].name;
+            if (i + 1 !== e.target.files.length) {
+              names += ", ";
+            }
+          }
+          this.setState({ fileName: names });
         }
         break;
       default:
@@ -487,6 +487,7 @@ class Contacts extends Component {
                   name="attach"
                   onChange={this.onChange.bind(this)}
                   ref={node => (this.attachValue = node)}
+                  multiple
                   style={{
                     width: "100%",
                     height: "100%",
