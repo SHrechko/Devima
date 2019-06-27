@@ -26,11 +26,14 @@ const styles = theme => ({
     width: "100%",
     minWidth: "270px",
     height: "max-content",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
     "& > div": {
       "@media (min-width: 768px)": {
-        marginLeft: "auto"
-      },
-      marginRight: "auto"
+        marginLeft: "auto",
+        marginRight: "auto"
+      }
     },
     "@media (min-width: 768px)": {
       width: "45%",
@@ -40,13 +43,12 @@ const styles = theme => ({
     }
   },
   subtitle: {
-    margin: "60px 150px 0 0",
+    margin: "60px 0 0",
     color: "#9b9b9b",
     fontSize: "16px",
     fontWeight: "400",
     "@media (max-width: 1023px)": {
       marginRight: "0",
-      width: "100%",
       marginTop: "26px",
       marginBottom: "40px"
     }
@@ -76,7 +78,7 @@ const styles = theme => ({
     }
   },
   cardMobile: {
-    width: "auto",
+    width: "calc(100% - 20px)",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -86,6 +88,7 @@ const styles = theme => ({
     padding: "20px",
     marginRight: "0",
     marginBottom: "26px",
+    maxWidth: "380px",
     "@media (min-width: 768px)": {
       maxWidth: "220px"
     },

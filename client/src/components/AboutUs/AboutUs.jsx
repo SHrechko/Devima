@@ -166,47 +166,47 @@ const styles = {
     justifyContent: "center",
     minHeight: "150px",
     "@media (max-width: 767px)": {
-      maxWidth: "463px",
+      maxWidth: "700px",
       flexWrap: "wrap",
       margin: "0 auto",
       paddingTop: "25px"
-    },
-    "@media (min-width: 768px)": {
-      backgroundImage: `url(${Rectangle})`,
-      backgroundPositionY: "top",
-      backgroundPositionX: "center",
-      backgroundRepeatX: "no-repeat",
-      backgroundRepeatY: "no-repeat",
-      boxSizing: "boder-box",
-      backgroundSize: "cover"
     }
+    // "@media (min-width: 768px)": {
+    //   backgroundImage: `url(${Rectangle})`,
+    //   backgroundPositionY: "top",
+    //   backgroundPositionX: "center",
+    //   backgroundRepeatX: "no-repeat",
+    //   backgroundRepeatY: "no-repeat",
+    //   boxSizing: "boder-box",
+    //   backgroundSize: "cover"
+    // }
   },
   statisticBlock: {
     "@media (min-width: 768px)": {
       padding: "0 50px",
       "&:not(:last-child)": {
-        borderRight: "1px solid #ffffff"
+        borderRight: "1px solid #ededed"
       }
     },
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    "@media (max-width: 455px)": {
+    "@media (max-width: 579px)": {
       padding: "0",
       width: "100%",
       display: "flex",
       flexDirection: "row",
       border: "none"
     },
-    "@media (min-width: 456px) and (max-width: 767px)": {
-      width: "182px",
+    "@media (min-width: 580px) and (max-width: 767px)": {
+      width: "230px",
 
       "&:nth-child(2n-1)": {
-        borderRight: "1px solid #ededed",
-        paddingRight: "25px"
+        // borderRight: "1px solid #ededed",
+        paddingRight: "30px"
       },
       "&:nth-child(2n)": {
-        paddingLeft: "25px"
+        paddingLeft: "30px"
       }
     }
   },
@@ -215,7 +215,10 @@ const styles = {
     fontSize: "25px",
     fontWeight: "300",
     lineHeight: "22px",
-    textAlign: "center"
+    textAlign: "center",
+    "@media (max-width: 579px)": {
+      minWidth: "max-content"
+    }
   },
   statisticNumbers: {
     position: "relative",
@@ -229,7 +232,7 @@ const styles = {
     letterSpacing: "-1.5px",
     lineHeight: "29px",
     minHeight: "39px",
-    "@media (max-width: 455px)": {
+    "@media (max-width: 579px)": {
       margin: "20px 10px 20px 10px"
     }
   },

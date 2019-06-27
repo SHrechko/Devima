@@ -16,8 +16,8 @@ const tabs = [
 const styles = theme => ({
   portfolio: {
     position: "relative",
-    width: "calc(100% - 20px)",
-    padding: "30px 10px 0",
+    width: "100%",
+    paddingTop: "30px",
     height: "max-content"
   },
   title: {
@@ -41,7 +41,8 @@ const styles = theme => ({
     width: "100%",
     height: "450px",
     marginBottom: "50px",
-    border: "2px solid rgba(0, 0, 0, 0.1)",
+    boxSizing: "border-box",
+    // border: "2px solid rgba(0, 0, 0, 0.1)",
     "@media screen and (max-width: 1024px)": {
       height: "400px"
     },
@@ -54,9 +55,9 @@ const styles = theme => ({
     background: "#ffffff",
     boxSizing: "border-box",
     position: "absolute",
-    width: "60%",
+    width: "50%",
     right: "0",
-    bottom: "0",
+    bottom: "3px",
     display: "inline-block",
     border: "2px solid rgba(0, 0, 0, 0.1)",
     "@media screen and (max-width: 1024px)": {
@@ -100,10 +101,11 @@ const styles = theme => ({
   },
   sliderImg: {
     boxSizing: "border-box",
-    width: "40%",
+    width: "50%",
     height: "450px",
     display: "inline-block",
     float: "left",
+    marginLeft: "1px",
     paddingBottom: "4px",
     "@media screen and (max-width: 1024px)": {
       height: "400px"
@@ -113,7 +115,7 @@ const styles = theme => ({
     }
   },
   sliderBody: {
-    width: "50%",
+    width: "calc(50% - 40px)",
     height: "calc(100% - 40px)",
     "& > h1": {
       fontSize: "26px",
@@ -126,7 +128,7 @@ const styles = theme => ({
     },
     display: "inline-block",
     float: "left",
-    padding: "20px 0 70px 30px"
+    padding: "20px 0 20px 30px"
   },
   slide: {
     boxSizing: "border-box",

@@ -45,13 +45,13 @@ const styles = theme => ({
   carousel: {
     marginTop: "62px",
     marginBottom: "75px",
-    minWidth: "240px",
+    minWidth: "250px",
     "@media (max-width: 767px)": {
       margin: "52px auto 65px"
     },
     "& > div > div": {
       position: "relative",
-      minHeight: "280px",
+      minHeight: "290px",
       height: "100%",
       "& > div > div": {
         position: "relative",

@@ -526,7 +526,7 @@ class Contacts extends Component {
           </div>
         </div>
         <div className={classes.footer}>
-          <span className={classes.deveema}>Deveema</span>
+          <span className={classes.deveema}>Devima</span>
           <span className={classes.deveemaInf}>
             © 2018 Deveema Solutions. All rights reserved
           </span>
