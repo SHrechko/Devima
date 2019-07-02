@@ -31,20 +31,20 @@ app.post("/send-email", (req, res) => {
     port: 587,
     secure: false,
     auth: {
-      user: "youremail@gmail.com", //input your email
-      pass: "your mail password" //input your password by email
+      user: "test@gmail.com", //input your email
+      pass: "password" //input your password by email
     },
     tls: {
       rejectUnauthorized: true
     }
   });
 
+  mails = ["email1@gmail.com", "email2@gmail.com"];
+
   let mailOptions = {
     from: `"${req.body.name}" <${req.body.email}>`, // sender address
-    to: "test@gmail.com", // email of receivers
     subject: "Message from Devima servise user", // Subject line
     text: `${req.body.message}` // plain text body
-    // html: `<b>${req.body.message}</b>`, // html body
   };
   if (req.body.attachedFileName && req.body.attachedFileName !== "") {
     mailOptions["attachments"] = [
@@ -54,11 +54,41 @@ app.post("/send-email", (req, res) => {
       }
     ];
   }
+  (async () => {
+    var promises = [];
+    mails.forEach(async function(to, i, array) {
+      promises.push(
+        new Promise(function(resolve, reject) {
+          mailOptions.to = to;
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      return console.log(error);
-    }
-    res.send({ success: true });
-  });
+          transporter.sendMail(
+            {
+              from: `"${req.body.name}" <${req.body.email}>`, // sender address
+              subject: "Message from Devima servise user", // Subject line
+              text: `${req.body.message}`, // plain text body
+              to: to
+            },
+            (error, info) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(info);
+              }
+            }
+          );
+        })
+      );
+    });
+
+    Promise.all(promises).then(
+      info => {
+        console.log(info);
+        res.send({ success: true });
+      },
+      error => {
+        console.log(error);
+        res.send({ success: false });
+      }
+    );
+  })();
 });
