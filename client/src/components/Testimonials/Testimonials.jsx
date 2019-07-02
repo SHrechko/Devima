@@ -401,7 +401,11 @@ class Testimonials extends Component {
         <div className={classes.title}>Testimonials</div>
         <Slider {...settings}>
           {clients.map(client => (
-            <div id={client.id} className={classes.carouselBlock}>
+            <div
+              key={client.id}
+              id={client.id}
+              className={classes.carouselBlock}
+            >
               <div className={classes.carouselItem}>
                 <div>
                   <img

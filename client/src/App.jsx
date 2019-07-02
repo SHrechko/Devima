@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <ThemeProvider theme={theme}>
-        <div
+        <main
           style={{
             minWidth: "320px",
             boxSizing: "border-box",
@@ -35,7 +35,7 @@ class App extends Component {
           <Portfolio />
           <Testimonials />
           <Contacts />
-        </div>
+        </main>
       </ThemeProvider>
     );
   }
