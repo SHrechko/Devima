@@ -7,20 +7,19 @@ import Mobile from "../../assets/mobile_development2.svg";
 import MobileWhite from "../../assets/mobile_development8_white.svg";
 import UxUiDesign from "../../assets/design2.svg";
 import UxUiDesignWhite from "../../assets/design2-white.svg";
-import DedicatedTeam from "../../assets/12-layers.svg";
-import DedicatedTeamWhite from "../../assets/11-layers-white.svg";
+import DedicatedTeam from "../../assets/dedicated-team.svg";
+import DedicatedTeamWhite from "../../assets/dedicated-team-white.svg";
+import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
 
 const styles = theme => ({
   services: {
-    padding: "75px",
-    "@media (max-width: 767px)": {
-      padding: "75px 20px"
-    }
+    paddingBottom: "75px"
   },
   flexRow: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between"
+    paddingTop: "70px"
   },
   mobileCardBlock: {
     width: "100%",
@@ -43,30 +42,28 @@ const styles = theme => ({
     }
   },
   subtitle: {
-    margin: "60px 0 0",
+    margin: "120px 0 0",
     color: "#9b9b9b",
     fontSize: "16px",
-    fontWeight: "400",
-    "@media (max-width: 1023px)": {
-      marginRight: "0",
-      marginTop: "26px",
-      marginBottom: "40px"
-    }
+    fontWeight: "400"
+  },
+  mdUp: {
+    marginTop: "30px"
   },
   title: {
-    minWidth: "calc(50% + 15px)",
     fontSize: "55px",
     fontWeight: "400",
     color: "#2f29d0",
+    marginTop: "29px",
     "@media (max-width: 1023)": {
       fontSize: "45px"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       fontSize: "25px"
     }
   },
   cardsBlock: {
-    marginTop: "70px",
+    marginTop: "70px !important",
     minHeight: "400px",
     "@media (max-width: 1023px)": {
       maxWidth: "661px",
@@ -102,14 +99,18 @@ const styles = theme => ({
     }
   },
   card: {
-    width: "250px",
+    "&.MuiPaper-root": {
+      transition: "margin 0.3s ease",
+      minHeight: "295px"
+    },
+    margin: 0,
     height: "max-content",
-    transition: "margin 0.3s",
+
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)",
-    borderRadius: "6px",
+    // boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)",
+    // borderRadius: "6px",
     padding: "30px",
     color: "#4a4a4a",
     fontSize: "16px",
@@ -118,35 +119,43 @@ const styles = theme => ({
     lineHeight: "25px",
     cursor: "pointer",
     overflow: "hidden",
-    "& > span": {
-      textAlign: "center"
-    },
-    "&:not(:last-child)": {
-      marginRight: "32px",
-      "@media (max-width: 1359px)": {
-        marginRight: "22px"
-      }
+    "@media (max-width: 959px)": {
+      justifyContent: "center"
     }
   },
   activeCard: {
     backgroundColor: "#7f0cda",
     marginTop: "-30px",
     background: "linear-gradient(to bottom, #7d0cda 0%, #a16ccc 100%)",
-    color: "#ffffff"
-  },
-  cardTitle: {
-    fontSize: "22px !important",
-    "@media (max-width: 1023px)": {
-      fontSize: "20px !important"
-    },
-    fontWeight: "600",
-    letterSpacing: "-0.83px",
-    lineHeight: "27px",
-    margin: "8px 0 10px",
-    textAlign: "center",
-    "@media (max-width: 768px)": {
-      fontSize: "20px"
+    "&.MuiPaper-root": {
+      color: "#ffffff"
     }
+  },
+  cardList: {
+    listStyleType: "none",
+    margin: 0,
+    padding: 0,
+    "&>li": {
+      textAlign: "center"
+    },
+    "&>li:first-child": {
+      fontSize: "22px !important",
+      "@media (max-width: 959px)": {
+        fontSize: "20px !important"
+      },
+      fontWeight: "600",
+      letterSpacing: "-0.83px",
+      lineHeight: "27px",
+      margin: "8px 0 10px",
+      textAlign: "center",
+      "@media (max-width: 768px)": {
+        fontSize: "20px"
+      }
+    }
+  },
+  gridItem: {
+    minHeight: "428px",
+    paddingTop: "50px"
   }
 });
 
@@ -164,138 +173,152 @@ class Services extends Component {
   }
 
   resize() {
-    this.setState({ hideNav: window.innerWidth >= 1024 });
+    this.setState({ mdWidth: window.innerWidth >= 960 });
   }
 
   setActiveCard = e => {
-    console.log(e.currentTarget.id);
+    if (!this.state.mdWidth) {
+      return;
+    }
     this.setState({
       activeCard: e.currentTarget.id.toString()
     });
   };
 
   render() {
-    const { activeCard, hideNav } = this.state;
+    const { activeCard, mdWidth } = this.state;
     const { classes } = this.props;
     return (
-      <div id="services" className={classes.services}>
-        <div className={classes.flexRow}>
-          <h1 className={classes.title}>Our Services</h1>
-          {hideNav && (
-            <React.Fragment>
-              <p
-                style={"card1" !== activeCard ? { display: "none" } : {}}
-                className={classes.subtitle}
-              >
-                1Want to build your product with a team that establishes a clear
-                design process, meets deadlines, and delivers a spot-on end
-                result? Our design team will help you build an engaging product
-                easily and quickly in accordance with the latest trends and
-                technologies.
-              </p>
-              <p
-                style={"card2" !== activeCard ? { display: "none" } : {}}
-                className={classes.subtitle}
-              >
-                2Want to build your product with a team that establishes a clear
-                design process, meets deadlines, and delivers a spot-on end
-                result? Our design team will help you build an engaging product
-                easily and quickly in accordance with the latest trends and
-                technologies.
-              </p>
-              <p
-                style={"card3" !== activeCard ? { display: "none" } : {}}
-                className={classes.subtitle}
-              >
-                3Want to build your product with a team that establishes a clear
-                design process, meets deadlines, and delivers a spot-on end
-                result? Our design team will help you build an engaging product
-                easily and quickly in accordance with the latest trends and
-                technologies.
-              </p>
-              <p
-                style={"card4" !== activeCard ? { display: "none" } : {}}
-                className={classes.subtitle}
-              >
-                4Want to build your product with a team that establishes a clear
-                design process, meets deadlines, and delivers a spot-on end
-                result? Our design team will help you build an engaging product
-                easily and quickly in accordance with the latest trends and
-                technologies.
-              </p>
-            </React.Fragment>
-          )}
-        </div>
-        {hideNav ? (
-          <React.Fragment>
-            <div className={classNames(classes.flexRow, classes.cardsBlock)}>
-              <div
+      <section id="services">
+        <Container className={classes.services}>
+          <Grid container>
+            <Grid item xs={12} md={6}>
+              <h2 className={classes.title}>Our Services</h2>
+            </Grid>
+            <Grid item md={6}>
+              <Hidden smDown>
+                <p
+                  style={"card1" !== activeCard ? { display: "none" } : {}}
+                  className={classes.subtitle}
+                >
+                  1Want to build your product with a team that establishes a
+                  clear design process, meets deadlines, and delivers a spot-on
+                  end result? Our design team will help you build an engaging
+                  product easily and quickly in accordance with the latest
+                  trends and technologies.
+                </p>
+                <p
+                  style={"card2" !== activeCard ? { display: "none" } : {}}
+                  className={classes.subtitle}
+                >
+                  2Want to build your product with a team that establishes a
+                  clear design process, meets deadlines, and delivers a spot-on
+                  end result? Our design team will help you build an engaging
+                  product easily and quickly in accordance with the latest
+                  trends and technologies.
+                </p>
+                <p
+                  style={"card3" !== activeCard ? { display: "none" } : {}}
+                  className={classes.subtitle}
+                >
+                  3Want to build your product with a team that establishes a
+                  clear design process, meets deadlines, and delivers a spot-on
+                  end result? Our design team will help you build an engaging
+                  product easily and quickly in accordance with the latest
+                  trends and technologies.
+                </p>
+                <p
+                  style={"card4" !== activeCard ? { display: "none" } : {}}
+                  className={classes.subtitle}
+                >
+                  4Want to build your product with a team that establishes a
+                  clear design process, meets deadlines, and delivers a spot-on
+                  end result? Our design team will help you build an engaging
+                  product easily and quickly in accordance with the latest
+                  trends and technologies.
+                </p>
+              </Hidden>
+            </Grid>
+          </Grid>
+
+          <Grid
+            container
+            spacing={3}
+            className={classes.flexRow}
+            className={classes.gridItem}
+          >
+            <Grid item xs={12} sm={6} md={3}>
+              <Paper
                 id="card1"
                 className={classNames(classes.card, {
-                  [classes.activeCard]: "card1" == activeCard
+                  [classes.activeCard]: mdWidth && "card1" == activeCard
                 })}
                 onClick={this.setActiveCard}
               >
                 <img
                   className={classes.cardImg}
-                  src={activeCard === "card1" ? WebDevWhite : WebDev}
+                  src={mdWidth && activeCard === "card1" ? WebDevWhite : WebDev}
                   width="100px"
                   alt="Web Development"
                 />
-                <span className={classes.cardTitle}>Web Development</span>
-                <span>Prototype and design</span>
-                <span>Web Aplications</span>
-                <span>Websites and Portals</span>
-                <span>Social Network Aplications</span>
-                <span>APIs</span>
-                <span>Quality assurance</span>
-              </div>
-              <div
+                <ul className={classes.cardList}>
+                  <li>Web Development</li>
+                  <li>Prototype and design</li>
+                  <li>Web Aplications</li>
+                  <li>Websites and Portals</li>
+                  <li>Social Network Aplications</li>
+                  <li>APIs</li>
+                  <li>Quality assurance</li>
+                </ul>
+              </Paper>
+              <Hidden mdUp>
+                <p className={classNames(classes.subtitle, classes.mdUp)}>
+                  1Want to build your product with a team that establishes a
+                  clear design process, meets deadlines, and delivers a spot-on
+                  end result? Our design team will help you build an engaging
+                  product easily and quickly in accordance with the latest
+                  trends and technologies.
+                </p>
+              </Hidden>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
+              <Paper
                 id="card2"
                 className={classNames(classes.card, {
-                  [classes.activeCard]: "card2" == activeCard
+                  [classes.activeCard]: mdWidth && "card2" == activeCard
                 })}
                 onClick={this.setActiveCard}
               >
                 <img
                   className={classes.cardImg}
                   width="100px"
-                  src={activeCard === "card2" ? MobileWhite : Mobile}
+                  src={mdWidth && activeCard === "card2" ? MobileWhite : Mobile}
                   alt="Mobile development"
                 />
-                <span className={classes.cardTitle}>Mobile development</span>
-                <span>Prototype and design</span>
-                <span>Web Aplications</span>
-                <span>Websites and Portals</span>
-                <span>Social Network Aplications</span>
-                <span>APIs</span>
-                <span>Quality assurance</span>
-              </div>
-              <div
+                <ul className={classes.cardList}>
+                  <li>Mobile development</li>
+                  <li>UX/UI App Design</li>
+                  <li>Cross-Platform Appt</li>
+                  <li>iOS Native App</li>
+                  <li>Androind Native App</li>
+                  <li>Quality assurance</li>
+                </ul>
+              </Paper>
+              <Hidden mdUp>
+                <p className={classNames(classes.subtitle, classes.mdUp)}>
+                  2Want to build your product with a team that establishes a
+                  clear design process, meets deadlines, and delivers a spot-on
+                  end result? Our design team will help you build an engaging
+                  product easily and quickly in accordance with the latest
+                  trends and technologies.
+                </p>
+              </Hidden>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
+              <Paper
                 id="card3"
                 className={classNames(classes.card, {
-                  [classes.activeCard]: "card3" == activeCard
-                })}
-                onClick={this.setActiveCard}
-              >
-                <img
-                  className={classes.cardImg}
-                  width="100px"
-                  src={activeCard === "card3" ? UxUiDesignWhite : UxUiDesign}
-                  alt="Ux/Ui Design"
-                />
-                <div className={classes.cardTitle}>Ux/Ui Design</div>
-                <span>Prototype and design</span>
-                <span>Web Aplications</span>
-                <span>Websites and Portals</span>
-                <span>Social Network Aplications</span>
-                <span>APIs</span>
-                <span>Quality assurance</span>
-              </div>
-              <div
-                id="card4"
-                className={classNames(classes.card, {
-                  [classes.activeCard]: "card4" == activeCard
+                  [classes.activeCard]: mdWidth && "card3" == activeCard
                 })}
                 onClick={this.setActiveCard}
               >
@@ -303,127 +326,71 @@ class Services extends Component {
                   className={classes.cardImg}
                   width="100px"
                   src={
-                    activeCard === "card4" ? DedicatedTeamWhite : DedicatedTeam
+                    mdWidth && activeCard === "card3"
+                      ? UxUiDesignWhite
+                      : UxUiDesign
                   }
-                  alt="Dedicated team"
+                  alt="Ux/Ui Design"
                 />
-                <span className={classes.cardTitle}>Dedicated team</span>
-                <span>Prototype and design</span>
-                <span>Web Aplications</span>
-                <span>Websites and Portals</span>
-                <span>Social Network Aplications</span>
-                <span>APIs</span>
-                <span>Quality assurance</span>
-              </div>
-            </div>
-          </React.Fragment>
-        ) : (
-          <React.Fragment>
-            <div className={classNames(classes.flexRow, classes.cardsBlock)}>
-              <div className={classes.mobileCardBlock}>
-                <div id="card1" className={classes.cardMobile}>
-                  <img
-                    className={classes.cardImg}
-                    src={WebDev}
-                    width="75px"
-                    height="75px"
-                    alt="Web Development"
-                  />
-                  <span className={classes.cardTitle}>Web Development</span>
-                  <span>Prototype and design</span>
-                  <span>Web Aplications</span>
-                  <span>Websites and Portals</span>
-                  <span>Social Network Aplications</span>
-                  <span>APIs</span>
-                  <span>Quality assurance</span>
-                </div>
-                <p className={classes.subtitle}>
-                  1Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
-                </p>
-              </div>
-              <div className={classes.mobileCardBlock}>
-                <div id="card2" className={classes.cardMobile}>
-                  <img
-                    className={classes.cardImg}
-                    width="75px"
-                    height="75px"
-                    src={Mobile}
-                    alt="Mobile development"
-                  />
-                  <span className={classes.cardTitle}>Mobile development</span>
-                  <span>Prototype and design</span>
-                  <span>Web Aplications</span>
-                  <span>Websites and Portals</span>
-                  <span>Social Network Aplications</span>
-                  <span>APIs</span>
-                  <span>Quality assurance</span>
-                </div>
-                <p className={classes.subtitle}>
-                  2Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
-                </p>
-              </div>
-              <div className={classes.mobileCardBlock}>
-                <div id="card3" className={classes.cardMobile}>
-                  <img
-                    className={classes.cardImg}
-                    width="75px"
-                    height="75px"
-                    src={UxUiDesign}
-                    alt="Ux/Ui Design"
-                  />
-                  <div className={classes.cardTitle}>Ux/Ui Design</div>
-                  <span>Prototype and design</span>
-                  <span>Web Aplications</span>
-                  <span>Websites and Portals</span>
-                  <span>Social Network Aplications</span>
-                  <span>APIs</span>
-                  <span>Quality assurance</span>
-                </div>
-                <p className={classes.subtitle}>
+                <ul className={classes.cardList}>
+                  <li>Ux/Ui Design</li>
+                  <li>Concept</li>
+                  <li>User experience design</li>
+                  <li>User interface design</li>
+                  <li>Brand identity</li>
+                </ul>
+              </Paper>
+              <Hidden mdUp>
+                <p className={classNames(classes.subtitle, classes.mdUp)}>
                   3Want to build your product with a team that establishes a
                   clear design process, meets deadlines, and delivers a spot-on
                   end result? Our design team will help you build an engaging
                   product easily and quickly in accordance with the latest
                   trends and technologies.
                 </p>
-              </div>
-              <div className={classes.mobileCardBlock}>
-                <div id="card4" className={classes.cardMobile}>
-                  <img
-                    className={classes.cardImg}
-                    width="75px"
-                    height="75px"
-                    src={DedicatedTeam}
-                    alt="Dedicated team"
-                  />
-                  <span className={classes.cardTitle}>Dedicated team</span>
-                  <span>Prototype and design</span>
-                  <span>Web Aplications</span>
-                  <span>Websites and Portals</span>
-                  <span>Social Network Aplications</span>
-                  <span>APIs</span>
-                  <span>Quality assurance</span>
-                </div>
-                <p className={classes.subtitle}>
+              </Hidden>
+            </Grid>
+            <Grid item xs={12} sm={6} md={3} className={classes.gridItem}>
+              <Paper
+                id="card4"
+                className={classNames(classes.card, {
+                  [classes.activeCard]: mdWidth && "card4" == activeCard
+                })}
+                onClick={this.setActiveCard}
+              >
+                <img
+                  className={classes.cardImg}
+                  width="100px"
+                  src={
+                    mdWidth && activeCard === "card4"
+                      ? DedicatedTeamWhite
+                      : DedicatedTeam
+                  }
+                  alt="Dedicated team"
+                />
+                <ul className={classes.cardList}>
+                  <li>Dedicated team</li>
+                  <li>Prototype and design</li>
+                  <li>Web Aplications</li>
+                  <li>Websites and Portals</li>
+                  <li>Social Network Aplications</li>
+                  <li>APIs</li>
+                  <li>Quality assurance</li>
+                </ul>
+              </Paper>
+              <Hidden mdUp>
+                <p className={classNames(classes.subtitle, classes.mdUp)}>
                   4Want to build your product with a team that establishes a
                   clear design process, meets deadlines, and delivers a spot-on
                   end result? Our design team will help you build an engaging
                   product easily and quickly in accordance with the latest
                   trends and technologies.
                 </p>
-              </div>
-            </div>
-          </React.Fragment>
-        )}
-      </div>
+              </Hidden>
+            </Grid>
+          </Grid>
+        </Container>
+      </section>
     );
   }
 }

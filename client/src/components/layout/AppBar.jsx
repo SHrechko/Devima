@@ -5,6 +5,7 @@ import Link from "../link/link";
 import devimaWhite from "../../assets/devima_white.svg";
 import devimaGrey from "../../assets/devima_grey.svg";
 import classNames from "classnames";
+import Container from "@material-ui/core/Container";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,7 +16,7 @@ library.add(faAlignJustify);
 const styles = theme => ({
   openedAppBar: {
     height: "100vh",
-    width: "100vw",
+    width: "100%",
     bottom: "0",
     position: "fixed",
     zIndex: "1300",
@@ -25,28 +26,29 @@ const styles = theme => ({
     boxSizing: "border-box",
     display: "flex",
     width: "auto",
-    alignItems: "center",
+    top: "50%",
+    right: "20px",
+    transform: "translate(0%, -50%)",
     position: "absolute",
-    right: "40px",
+    alignItems: "center",
     "@media (min-width: 1024px)": {
       left: "calc(50% - 50px)"
     },
-    "@media (max-width: 768px)": {
+    "@media (max-width: 959px)": {
       display: "none",
-      top: "25%",
       width: "100%",
       flexDirection: "column",
       alignItems: "center",
       right: 0
     },
     "& > *": {
-      "@media (max-width: 768px)": {
+      "@media (max-width: 959px)": {
         marginRight: 0,
         width: "100%",
         padding: "10px 25px"
       }
     },
-    "@media (min-width: 769px)": {
+    "@media (min-width: 960px)": {
       "& > *:not(:last-child)": {
         marginRight: `${theme.default.space * 8}px`,
         "@media (max-width: 1360px)": {
@@ -58,15 +60,13 @@ const styles = theme => ({
   menuButton: {
     width: "56px",
     height: "58px",
-    position: "absolute",
     backgroundColor: "rgba(255, 255, 255, 0.1)",
-    left: "48px",
-    top: "16px",
+    marginLeft: "20px",
     "& > *": { fontWeight: "900", fontSize: "26px" },
-    display: "flex",
+    display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
-    "@media (min-width: 769px)": {
+    "@media (min-width: 960px)": {
       display: "none"
     },
     color: "#ffffff",
@@ -83,11 +83,11 @@ const styles = theme => ({
     minWidth: "max-content",
     borderTop: "1px solid rgba(0,0,0,0)",
     borderBottom: "1px solid rgba(0,0,0,0)",
-    "@media (min-width: 769px)": {
+    "@media (min-width: 960px)": {
       padding: "5px 0"
     },
     "&:hover": {
-      "@media (max-width: 768px)": {
+      "@media (max-width: 959px)": {
         borderTop: "1px solid #ffffff"
       },
       borderBottom: "1px solid #ffffff"
@@ -100,22 +100,19 @@ const styles = theme => ({
     backgroundImage: `url(${devimaGrey})`
   },
   deveemaIcon: {
-    position: "absolute",
-    left: "144px",
+    marginTop: "30px",
+    marginLeft: "0",
     width: "103px",
     height: "32px",
-    top: "30px",
+    display: "inline-block",
     backgroundSize: "contain",
     backgroundRepeatX: "no-repeat",
     backgroundRepeatY: "no-repeat",
     backgroundPositionX: "center",
     backgroundPositionY: "center",
     boxSizing: "boder-box",
-    "@media (max-width: 1024px)": {
-      left: "100px"
-    },
-    "@media (max-width: 768px)": {
-      left: "137px"
+    "@media (max-width: 959px)": {
+      marginLeft: "20px"
     }
   }
 });
@@ -171,12 +168,15 @@ class AppBar extends Component {
 
   componentDidMount() {
     document.addEventListener("scroll", this.headerFixer);
+    window.addEventListener("resize", this.resize.bind(this));
     const links = document.querySelectorAll("#links > span");
     for (let i = 0; i < links.length; i++) {
       links[i].addEventListener("click", this.closeMenu);
     }
+    this.resize();
   }
   componentWillUnmount() {
+    window.removeEventListener("resize", this.resize.bind(this));
     const links = document.querySelectorAll("#links > span");
     for (let i = 0; i < links.length; i++) {
       links[i].removeEventListener("click", this.closeMenu);
@@ -184,51 +184,61 @@ class AppBar extends Component {
     document.removeEventListener("scroll", this.headerFixer);
   }
 
+  resize() {
+    if (window.innerWidth >= 960) {
+      document
+        .getElementById("header")
+        .classList.remove(this.props.classes.openedAppBar);
+    }
+  }
   render() {
     const { opened, fixed } = this.state;
     const { classes } = this.props;
     return (
-      <div
+      <header
         id="header"
         className={classNames("appBar", { [classes.openedAppBar]: opened })}
       >
-        <div onClick={this.openClick} className={classes.menuButton}>
-          <FontAwesomeIcon
-            style={{ color: fixed ? "black" : "#ffffff" }}
-            icon="align-justify"
+        <Container style={{ position: "relative", height: "100%" }}>
+          <div onClick={this.openClick} className={classes.menuButton}>
+            <FontAwesomeIcon
+              style={{ color: fixed ? "black" : "#ffffff" }}
+              icon="align-justify"
+            />
+          </div>
+          <div
+            className={classNames(classes.deveemaIcon, {
+              [classes.devimaGrey]: fixed,
+              [classes.devimaWhite]: !fixed
+            })}
           />
-        </div>
-        <div
-          className={classNames(classes.deveemaIcon, {
-            [classes.devimaGrey]: fixed,
-            [classes.devimaWhite]: !fixed
-          })}
-        />
-        <div
-          id="links"
-          style={opened ? { display: "flex" } : {}}
-          className={classes.headerLinks}
-        >
-          <Link className={classes.linkScroll} href="#home">
-            Home
-          </Link>
-          <Link className={classes.linkScroll} href="#services">
-            Services
-          </Link>
-          <Link className={classes.linkScroll} href="#about_us">
-            About us
-          </Link>
-          <Link className={classes.linkScroll} href="#portfolio">
-            Portfolio
-          </Link>
-          <Link className={classes.linkScroll} href="#testimonials">
-            Testimonials
-          </Link>
-          <Link className={classes.linkScroll} href="#contacts">
-            Contacts
-          </Link>
-        </div>
-      </div>
+          <nav
+            id="links"
+            style={opened ? { display: "flex" } : {}}
+            className={classes.headerLinks}
+          >
+            <Link className={classes.linkScroll} href="#home">
+              Home
+            </Link>
+            <Link className={classes.linkScroll} href="#services">
+              Services
+            </Link>
+            <Link className={classes.linkScroll} href="#about_us">
+              About us
+            </Link>
+            <Link className={classes.linkScroll} href="#portfolio">
+              Portfolio
+            </Link>
+            <Link className={classes.linkScroll} href="#testimonials">
+              Testimonials
+            </Link>
+            <Link className={classes.linkScroll} href="#contacts">
+              Contacts
+            </Link>
+          </nav>
+          <div style={{ clear: "both" }} />
+        </Container>
+      </header>
     );
   }
 }

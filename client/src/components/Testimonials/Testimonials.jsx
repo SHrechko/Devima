@@ -14,22 +14,26 @@ import Dean from "../../assets/Dean.png";
 import Nerijus from "../../assets/Nerijus.png";
 import Thiago from "../../assets/Thiago.png";
 
+// import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
+import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
+
 import Slider from "react-slick";
 
 // import Carousel from "./SlikCarousel";
 
 const styles = theme => ({
   title: {
-    margin: "29px 0 0 71px",
+    paddingTop: "29px",
     color: "#5535b8",
     fontSize: "55px",
     fontWeight: "400",
     "@media (max-width: 1023)": {
       fontSize: "45px"
     },
-    "@media (max-width: 767px)": {
-      fontSize: "25px",
-      marginLeft: "25px"
+    "@media (max-width: 599px)": {
+      fontSize: "25px"
     }
   },
   ourLeadershipTitle: {
@@ -38,7 +42,7 @@ const styles = theme => ({
     "@media (max-width: 1023)": {
       fontSize: "45px"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       fontSize: "25px"
     }
   },
@@ -93,13 +97,11 @@ const styles = theme => ({
     margin: "10px 0 30px",
     padding: "25px 16px 5px",
     height: "calc(100% - 65px)",
-    boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)",
+
     overflow: "hidden",
     "@media (max-width: 767px)": {
-      minWidth: "240px",
-      boxShadow: "3px 10px 15px rgba(41, 26, 204, 0.12)"
+      minWidth: "240px"
     },
-    borderRadius: "6px",
     backgroundColor: "#ffffff",
     "&::after,::before": {
       clear: "both",
@@ -108,19 +110,29 @@ const styles = theme => ({
     "& > div:first-child": {
       display: "flex",
       flexDirection: "row"
+    },
+    "&.MuiPaper-rounded": {
+      borderRadius: "6px"
+    },
+    "&.MuiPaper-elevation1": {
+      boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)",
+      "@media (max-width: 767px)": {
+        boxShadow: "3px 10px 15px rgba(41, 26, 204, 0.12)"
+      }
     }
   },
   headingText: {
-    "& > div:first-child": {
+    "& > h3": {
       color: "#4a4a4a",
       fontSize: "22px",
       fontWeight: "400",
       fontHeight: "24px",
       letterSpacing: "-0.83px",
-      lineHeight: "29px"
+      lineHeight: "29px",
+      margin: 0
     },
-    "& > div:last-child": {
-      marginTop: "5px",
+    "& > p": {
+      margin: "5px 0 0",
       color: "#4a4a4a",
       fontSize: "16px",
       fontWeight: "400",
@@ -160,8 +172,6 @@ const styles = theme => ({
   ourLeadershipItem: {
     width: "280px",
     minHeight: "256px",
-    boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)",
-    borderRadius: "6px",
     display: "flex !important",
     flexDirection: "column",
     alignItems: "center",
@@ -170,6 +180,12 @@ const styles = theme => ({
     "@media (min-width: 768px) and (max-width: 1024px)": {
       minWidth: "176px",
       margin: "0 20px"
+    },
+    "&.MuiPaper-rounded": {
+      borderRadius: "6px"
+    },
+    "&.MuiPaper-elevation1": {
+      boxShadow: "5px 10px 30px rgba(41, 26, 204, 0.12)"
     }
   },
   centerLeaders: {
@@ -184,7 +200,7 @@ const styles = theme => ({
     height: "108px"
   },
   leadershipTitle: {
-    marginTop: "14px",
+    margin: "14px 0 0",
     color: "#4a4a4a",
     fontSize: "16px",
     fontWeight: "900"
@@ -301,23 +317,11 @@ const clients = [
 class Testimonials extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      showBlock: window.innerWidth >= 768
-    };
-  }
-
-  componentDidMount() {
-    window.addEventListener("resize", this.resize.bind(this));
-    this.resize();
-  }
-
-  resize() {
-    this.setState({ showBlock: window.innerWidth >= 768 });
+    this.state = {};
   }
 
   render() {
     const { classes } = this.props;
-    const { showBlock } = this.state;
     var settingsLeadership = {
       dotsClass: classNames("slick-dots", classes.dotsClass),
       adaptiveHeight: true,
@@ -382,7 +386,7 @@ class Testimonials extends Component {
           }
         },
         {
-          breakpoint: 570,
+          breakpoint: 659,
           settings: {
             slidesToShow: 1,
             slidesToScroll: 1,
@@ -397,8 +401,10 @@ class Testimonials extends Component {
       ]
     };
     return (
-      <div id="testimonials">
-        <div className={classes.title}>Testimonials</div>
+      <section id="testimonials">
+        <Container>
+          <h2 className={classes.title}>Testimonials</h2>
+        </Container>
         <Slider {...settings}>
           {clients.map(client => (
             <div
@@ -406,7 +412,7 @@ class Testimonials extends Component {
               id={client.id}
               className={classes.carouselBlock}
             >
-              <div className={classes.carouselItem}>
+              <Paper className={classes.carouselItem}>
                 <div>
                   <img
                     src={client.img}
@@ -414,19 +420,21 @@ class Testimonials extends Component {
                     alt={client.name}
                   />
                   <div className={classes.headingText}>
-                    <div>{client.name}</div>
-                    <div>{client.sub}</div>
+                    <h3>{client.name}</h3>
+                    <p>{client.sub}</p>
                   </div>
                 </div>
                 <p className={classes.bodyText}>{client.txt}</p>
-              </div>
+              </Paper>
             </div>
           ))}
         </Slider>
-        <div className={classNames(classes.title, classes.ourLeadershipTitle)}>
-          Our leadership team
-        </div>
-        {showBlock ? (
+        <Container>
+          <h2 className={classNames(classes.title, classes.ourLeadershipTitle)}>
+            Our leadership team
+          </h2>
+        </Container>
+        <Hidden smDown>
           <div
             className={classNames(
               classes.ourLeadership,
@@ -434,7 +442,7 @@ class Testimonials extends Component {
             )}
           >
             {leaders.map((leader, index) => (
-              <div
+              <Paper
                 key={leader.id}
                 className={classNames(classes.ourLeadershipItem, {
                   [classes.centerLeaders]: index === 1
@@ -445,8 +453,8 @@ class Testimonials extends Component {
                   className={classes.leadershipImg}
                   alt={leader.name}
                 />
-                <div className={classes.leadershipTitle}>{leader.name}</div>
-                <div className={classes.leadershipSub}>{leader.sub}</div>
+                <h3 className={classes.leadershipTitle}>{leader.name}</h3>
+                <sub className={classes.leadershipSub}>{leader.sub}</sub>
                 <div className={classes.linkIconBlock}>
                   <a href={`mailto:${leader.email}`}>
                     <i
@@ -477,20 +485,21 @@ class Testimonials extends Component {
                     />
                   )}
                 </div>
-              </div>
+              </Paper>
             ))}
           </div>
-        ) : (
+        </Hidden>
+        <Hidden mdUp>
           <Slider {...settingsLeadership}>
             {leaders.map((leader, index) => (
-              <div key={leader.id} className={classes.ourLeadershipItem}>
+              <Paper key={leader.id} className={classes.ourLeadershipItem}>
                 <img
                   src={leader.img}
                   className={classes.leadershipImg}
                   alt={leader.name}
                 />
-                <div className={classes.leadershipTitle}>{leader.name}</div>
-                <div className={classes.leadershipSub}>{leader.sub}</div>
+                <h4 className={classes.leadershipTitle}>{leader.name}</h4>
+                <sub className={classes.leadershipSub}>{leader.sub}</sub>
                 <div className={classes.linkIconBlock}>
                   <a href={`mailto:${leader.email}`}>
                     <i
@@ -521,11 +530,11 @@ class Testimonials extends Component {
                     />
                   )}
                 </div>
-              </div>
+              </Paper>
             ))}
           </Slider>
-        )}
-      </div>
+        </Hidden>
+      </section>
     );
   }
 }

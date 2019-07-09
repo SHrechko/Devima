@@ -24,7 +24,8 @@ class App extends Component {
           style={{
             minWidth: "320px",
             boxSizing: "border-box",
-            overflow: "hidden"
+            overflow: "hidden",
+            position: "relative"
             // width: "max-content"
           }}
           id="general_block_page"

@@ -9,6 +9,8 @@ import injectSheet from "react-jss";
 import Link from "../link/link";
 import styled, { css, keyframes } from "styled-components";
 import classNames from "classnames";
+import Container from "@material-ui/core/Container";
+import Hidden from "@material-ui/core/Hidden";
 
 const pointScrollFrame = keyframes`
 0% {
@@ -27,7 +29,7 @@ const animationPoint = () =>
   `;
 
 const ScrollPoint = styled.div`
-  width: 3px;
+  width: 1px;
   height: 8px;
   border-radius: 2px;
   background-color: #2b1dcd;
@@ -56,7 +58,7 @@ const styles = theme => ({
   flexCenter: {
     height: "calc(100% - 140px)",
     display: "flex",
-    paddingTop: "90px",
+    // paddingTop: "90px",
     justifyContent: "center",
     alignItems: "center"
   },
@@ -64,7 +66,7 @@ const styles = theme => ({
     display: "flex",
     flexDirection: "row",
     width: "100%",
-    margin: `0 ${theme.default.space * 10}px 0 ${theme.default.space * 20}px`,
+    margin: `0`,
     position: "relative",
     "@media (max-width: 767px)": {
       margin: "0 20px",
@@ -72,12 +74,11 @@ const styles = theme => ({
     }
   },
   bodyLinks: {
+    listStyleType: "none",
+    padding: 0,
     display: "flex",
     flexDirection: "column",
-    margin: `auto ${theme.default.space * 2}px 0`,
-    "@media (max-width: 767px)": {
-      display: "none"
-    }
+    margin: `auto ${theme.default.space * 2}px 0`
   },
   link: {
     backgroundPositionX: "center",
@@ -102,6 +103,7 @@ const styles = theme => ({
     fontSize: "45px",
     lineHeight: "50px",
     letterSpacing: "-1.69px",
+    fontWeight: 400,
     "@media (max-width: 768px)": {
       maxWidth: "429px"
     }
@@ -117,6 +119,7 @@ const styles = theme => ({
     }
   },
   startButton: {
+    color: "#ffffff",
     width: "175px",
     height: "60px",
     backgroundColor: "#56d7a5",
@@ -148,14 +151,11 @@ const styles = theme => ({
     width: "22px",
     height: "32px",
     borderRadius: "10px",
-    border: "2px solid #2716ca",
+    border: "1px solid #2716ca",
     margin: "0 auto",
     position: "relative",
     zIndex: "900",
-    backgroundColor: "#ffffff",
-    "@media (max-width: 767px)": {
-      display: "none"
-    }
+    backgroundColor: "#ffffff"
   },
   scrollDown: {
     transform: "translate(0, -50%) rotate(90deg)",
@@ -209,6 +209,13 @@ const styles = theme => ({
   },
   ln: {
     backgroundImage: `url(${LN})`
+  },
+  container: {
+    position: "relative",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
   }
 });
 
@@ -221,42 +228,52 @@ class Home extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div id="home" className={classes.home}>
+      <section id="home" className={classes.home}>
         <AppBar />
-        <div className={classes.flexCenter}>
-          <div className={classes.bodyHome}>
-            <span className={classes.bodyLinks}>
-              <div className={classNames(classes.link, classes.fb)} />
-              <div className={classNames(classes.link, classes.up)} />
-              <div className={classNames(classes.link, classes.ln)} />
-            </span>
-            <div className={classes.bodyContent}>
-              {/* <div className={classes.upTitle}>-What we do</div> */}
-              <div className={classes.title}>
-                Implement Your great ideas <br />
-                into real life
+        <Container className={classes.container}>
+          <div className={classes.flexCenter}>
+            <div className={classes.bodyHome}>
+              <Hidden xsDown>
+                <ul className={classes.bodyLinks}>
+                  <li className={classNames(classes.link, classes.fb)} />
+                  <li className={classNames(classes.link, classes.up)} />
+                  <li className={classNames(classes.link, classes.ln)} />
+                </ul>
+              </Hidden>
+              <div className={classes.bodyContent}>
+                {/* <div className={classes.upTitle}>-What we do</div> */}
+                <h1 className={classes.title}>
+                  Implement Your great ideas <br />
+                  into real life
+                </h1>
+                <p className={classes.subTitle}>
+                  We combine our experience and modern technologies to provide a
+                  quality product for our customers
+                </p>
+                <Link
+                  href="#contacts"
+                  component="button"
+                  className={classes.startButton}
+                >
+                  <span>Get Started</span>
+                  <span className={classes.arrow} />
+                </Link>
               </div>
-              <div className={classes.subTitle}>
-                We combine our experience and modern technologies to provide a
-                quality product for our customers
+              <div className={classes.scrollDown}>
+                <Link href="#services" className={classes.downLink}>
+                  Scroll down
+                  <span className={classes.linear} />
+                </Link>
               </div>
-              <Link href="#contacts" className={classes.startButton}>
-                <span>Get Started</span>
-                <span className={classes.arrow} />
-              </Link>
-            </div>
-            <div className={classes.scrollDown}>
-              <Link href="#services" className={classes.downLink}>
-                Scroll down
-                <span className={classes.linear} />
-              </Link>
             </div>
           </div>
-        </div>
-        <Link href="#services" className={classes.serviceLink}>
-          <ScrollPoint />
-        </Link>
-      </div>
+          <Hidden smDown>
+            <Link href="#services" className={classes.serviceLink}>
+              <ScrollPoint />
+            </Link>
+          </Hidden>
+        </Container>
+      </section>
     );
   }
 }

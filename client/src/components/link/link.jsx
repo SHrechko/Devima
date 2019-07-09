@@ -23,14 +23,24 @@ const scrollById = e => {
 
   return false;
 };
-const Link = injectSheet(styles)(({ classes, href, className, children }) => (
-  <span
-    href={href}
-    onClick={scrollById.bind(this)}
-    className={classNames(classes.linkClass, className)}
-  >
-    {children}
-  </span>
-));
+const Link = injectSheet(styles)(
+  ({ classes, href, component = "span", className, children }) =>
+    React.createElement(
+      component,
+      {
+        href: href,
+        onClick: scrollById.bind(this),
+        className: classNames(classes.linkClass, className)
+      },
+      children
+    )
+    // <component
+    //   href={href}
+    //   onClick={scrollById.bind(this)}
+    //   className={classNames(classes.linkClass, className)}
+    // >
+    //   {children}
+    // </component>
+);
 
 export default injectSheet(styles)(Link);
