@@ -223,11 +223,11 @@ class AppBar extends Component {
             <Link className={classes.linkScroll} href="#services">
               Services
             </Link>
-            <Link className={classes.linkScroll} href="#about_us">
-              About us
-            </Link>
             <Link className={classes.linkScroll} href="#portfolio">
               Portfolio
+            </Link>
+            <Link className={classes.linkScroll} href="#about_us">
+              About us
             </Link>
             <Link className={classes.linkScroll} href="#testimonials">
               Testimonials

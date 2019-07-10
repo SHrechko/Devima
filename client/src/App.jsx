@@ -32,8 +32,8 @@ class App extends Component {
         >
           <Home />
           <Services />
-          <AboutUs />
           <Portfolio />
+          <AboutUs />
           <Testimonials />
           <Contacts />
         </main>

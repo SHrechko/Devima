@@ -15,9 +15,6 @@ import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 
 const styles = theme => ({
-  services: {
-    paddingBottom: "75px"
-  },
   flexRow: {
     paddingTop: "70px"
   },
