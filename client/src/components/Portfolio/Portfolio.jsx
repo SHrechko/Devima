@@ -32,15 +32,15 @@ const tabs = [
   {
     id: "0",
     value:
-      "The main goal of the Impresso is to build the next" +
-      "generation of career data. The Impresso application" +
-      "represents validated profiles and SMART (Secure," +
-      "Monetize, Automite, Reactive and Trust) CVs which" +
-      "include all personal career data posted to the user’s" +
-      "future blockchain profile. This application will replace" +
-      "today’s tradition resumes hosted online on traditional" +
-      "servers. Companies and recruiters will be able to trust" +
-      "SMART CV’s information as all personal data will be" +
+      "The main goal of the Impresso is to build the next " +
+      "generation of career data. The Impresso application " +
+      "represents validated profiles and SMART (Secure, " +
+      "Monetize, Automite, Reactive and Trust) CVs which " +
+      "include all personal career data posted to the user’s " +
+      "future blockchain profile. This application will replace " +
+      "today’s tradition resumes hosted online on traditional " +
+      "servers. Companies and recruiters will be able to trust " +
+      "SMART CV’s information as all personal data will be " +
       "validated through the blockchain."
   },
   { id: "1", value: "second" },
@@ -56,11 +56,12 @@ const styles = theme => ({
     fontSize: "55px",
     fontWeight: "400",
     display: "inline-block",
-    marginBottom: "50px",
-    "@media (max-width: 959)": {
+    margin: "50px 0",
+    "@media (max-width: 959px)": {
       fontSize: "45px"
     },
     "@media (max-width: 599px)": {
+      margin: "29px 0",
       fontSize: "25px"
     }
   },
@@ -95,8 +96,8 @@ const styles = theme => ({
   tabsHead: {
     "& > div": {
       fontSize: "20px",
-      fontWeight: "700",
-      color: "#5535b8",
+      fontWeight: "500",
+      color: "#adb2b3",
       cursor: "pointer",
       "@media (max-width: 959px)": {
         fontSize: "16px"
@@ -177,7 +178,14 @@ const styles = theme => ({
     }
   },
   activeTabCategory: {
-    color: "#5535b8"
+    color: "#5535b8 !important"
+  },
+  tabCategory: {
+    color: "#adb2b3"
+  },
+  activeImpressoTab: {
+    color: "#4a4a4a !important",
+    fontWeight: "700 !important"
   }
 });
 
@@ -196,14 +204,9 @@ class Portfolio extends Component {
     });
   };
 
-  clickTabCategory() {
-    this.setState({
-      showTab: 0
-    });
-  }
-
   changeCategory(id) {
     this.setState({
+      showTab: 0,
       activeCategory: id
     });
   }
@@ -262,13 +265,31 @@ class Portfolio extends Component {
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} className={classes.tabsHead}>
-                    <Grid item onClick={() => this.handleClick(0)}>
+                    <Grid
+                      item
+                      className={classNames({
+                        [classes.activeImpressoTab]: showTab === 0
+                      })}
+                      onClick={() => this.handleClick(0)}
+                    >
                       Description
                     </Grid>
-                    <Grid item onClick={() => this.handleClick(1)}>
+                    <Grid
+                      item
+                      className={classNames({
+                        [classes.activeImpressoTab]: showTab === 1
+                      })}
+                      onClick={() => this.handleClick(1)}
+                    >
                       Delivered value
                     </Grid>
-                    <Grid item onClick={() => this.handleClick(2)}>
+                    <Grid
+                      item
+                      className={classNames({
+                        [classes.activeImpressoTab]: showTab === 2
+                      })}
+                      onClick={() => this.handleClick(2)}
+                    >
                       Teach Stack
                     </Grid>
                   </Grid>
@@ -312,33 +333,33 @@ class Portfolio extends Component {
             item
             xs={4}
             onClick={() => this.changeCategory(0)}
-            className={classNames({
+            className={classNames(classes.tabCategory, {
               [classes.activeTabCategory]: activeCategory === 0
             })}
           >
-            Tab 1
+            Impresso
           </Grid>
           <Grid
             component="li"
             item
             xs={4}
             onClick={() => this.changeCategory(1)}
-            className={classNames({
+            className={classNames(classes.tabCategory, {
               [classes.activeTabCategory]: activeCategory === 1
             })}
           >
-            Tab 2
+            WABBA
           </Grid>
           <Grid
             component="li"
             item
             xs={4}
             onClick={() => this.changeCategory(2)}
-            className={classNames({
+            className={classNames(classes.tabCategory, {
               [classes.activeTabCategory]: activeCategory === 2
             })}
           >
-            Tab 3
+            Vedo
           </Grid>
         </Grid>
       </Container>

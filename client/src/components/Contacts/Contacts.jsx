@@ -9,6 +9,7 @@ import Link from "../link/link";
 import FB from "../../assets/fb.svg";
 import UP from "../../assets/up.svg";
 import LN from "../../assets/ln.svg";
+import ScrollUp from "../../assets/Scrollup.svg";
 import axios from "axios";
 
 import Grid from "@material-ui/core/Grid";
@@ -34,14 +35,16 @@ const styles = theme => ({
   },
   title: {
     display: "inline-block",
-    margin: "29px 0 25px",
+    margin: 0,
+    padding: "50px 0",
     color: "#5535b8",
     fontSize: "55px",
     fontWeight: "400",
-    "@media (max-width: 1023)": {
+    "@media (max-width: 959px)": {
       fontSize: "45px"
     },
     "@media (max-width: 599px)": {
+      padding: "29px 0",
       fontSize: "25px"
     }
   },
@@ -53,10 +56,10 @@ const styles = theme => ({
         paddingRight: 0
       }
     },
-    "@media (min-width: 768px) and (max-width: 1024px)": {
+    "@media (min-width: 600px) and (max-width: 959px)": {
       paddingBottom: "152px"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       paddingBottom: "205px"
     }
   },
@@ -195,7 +198,7 @@ const styles = theme => ({
     "& >*": {
       color: "#ffffff"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       height: "96px",
       display: "flex",
       flexDirection: "column",
@@ -210,11 +213,11 @@ const styles = theme => ({
     fontWeight: "400",
     display: "block",
     margin: 0,
-    "@media (min-width: 768px) and (max-width: 1024px)": {
+    "@media (min-width: 600px) and (max-width: 959px)": {
       position: "absolute",
       top: "-25px"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       marginTop: "19px"
     }
   },
@@ -223,46 +226,32 @@ const styles = theme => ({
     margin: "0 auto",
     fontSize: "12px",
     fontWeight: "400",
-    "@media (min-width: 768px) and (max-width: 1024px)": {
+    "@media (min-width: 600px) and (max-width: 959px)": {
       margin: "0 69px 0 0",
       fontSize: "10px"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       marginLeft: "0",
       marginTop: "9px",
       fontSize: "10px"
     }
   },
-  fb: {
-    backgroundImage: `url(${FB})`
-  },
-  up: {
-    backgroundImage: `url(${UP})`
-  },
-  in: {
-    backgroundImage: `url(${LN})`
-  },
   links: {
     display: "flex",
     flexDirection: "row",
+    alignItems: "center",
     position: "relative",
     listStyleType: "none",
     padding: 0,
     margin: 0,
     "& > li": {
-      cursor: "pointer",
-      backgroundPositionX: "center",
-      backgroundRepeatX: "no-repeat",
-      backgroundRepeatY: "no-repeat",
-      boxSizing: "boder-box",
-      width: "22px",
-      height: "18px",
+      boxSizing: "border-box",
       marginRight: "15px",
-      "@media (max-width: 767px)": {
+      "@media (max-width: 599px)": {
         margin: "auto"
       }
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       position: "absolute",
       left: "0",
       right: "0",
@@ -285,14 +274,13 @@ const styles = theme => ({
       left: "50%",
       transform: "translate(-50%, -50%)"
     },
-    "@media (min-width: 768px) and (max-width: 1024px)": {
+    "@media (min-width: 600px) and (max-width: 959px)": {
       marginLeft: "auto"
     },
-    "@media (max-width: 767px)": {
+    "@media (max-width: 599px)": {
       position: "absolute",
       right: 0,
-      top: "50%",
-      transform: "translate(0%, -50%)"
+      top: "10%"
     }
   },
   goHomeLink: {
@@ -586,13 +574,36 @@ class Contacts extends Component {
                 © 2018 Devima Solutions. All rights reserved
               </p>
               <ul className={classes.links}>
-                <li className={classes.fb} />
-                <li className={classes.up} />
-                <li className={classes.in} />
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://www.facebook.com/DevimaSolutions"
+                  >
+                    <img src={FB} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://www.upwork.com/o/companies/_~012ce16d31fde250a8/"
+                  >
+                    <img src={UP} style={{ marginTop: "5px" }} />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="https://www.linkedin.com/company/devima-solutions/"
+                  >
+                    <img src={LN} />
+                  </a>
+                </li>
               </ul>
               <div className={classes.goHome}>
                 <Link className={classes.goHomeLink} href="#root" />
-                <Link href="#root">^</Link>
+                <Link href="#root">
+                  <img src={ScrollUp} />
+                </Link>
               </div>
             </footer>
           </Container>

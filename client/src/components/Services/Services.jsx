@@ -39,10 +39,14 @@ const styles = theme => ({
     }
   },
   subtitle: {
+    minHeight: "96px",
     margin: "120px 0 0",
     color: "#9b9b9b",
     fontSize: "16px",
-    fontWeight: "400"
+    fontWeight: "400",
+    "@media (max-width: 599px)": {
+      minHeight: 0
+    }
   },
   mdUp: {
     marginTop: "30px"
@@ -51,11 +55,12 @@ const styles = theme => ({
     fontSize: "55px",
     fontWeight: "400",
     color: "#2f29d0",
-    marginTop: "29px",
-    "@media (max-width: 1023)": {
+    margin: "50px 0",
+    "@media (max-width: 959px)": {
       fontSize: "45px"
     },
     "@media (max-width: 599px)": {
+      margin: "29px 0",
       fontSize: "25px"
     }
   },
@@ -151,8 +156,7 @@ const styles = theme => ({
     }
   },
   gridItem: {
-    minHeight: "428px",
-    paddingTop: "50px"
+    minHeight: "428px"
   }
 });
 
@@ -198,27 +202,24 @@ class Services extends Component {
                   style={"card1" !== activeCard ? { display: "none" } : {}}
                   className={classes.subtitle}
                 >
-                  1Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
+                  We deliver our clients a variety of web development services
+                  using the latest and proven web technologies. That's why we
+                  can perfectly fit the client's requirements.
                 </p>
                 <p
                   style={"card2" !== activeCard ? { display: "none" } : {}}
                   className={classes.subtitle}
                 >
-                  2Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
+                  We offer customized Blockchain solutions, ICO services,
+                  consulting for your business security and growth. No matter
+                  what you need, multi-currency transactions or ICO campaign,
+                  you’re at the right place.
                 </p>
                 <p
                   style={"card3" !== activeCard ? { display: "none" } : {}}
                   className={classes.subtitle}
                 >
-                  3Want to build your product with a team that establishes a
+                  Want to build your product with a team that establishes a
                   clear design process, meets deadlines, and delivers a spot-on
                   end result? Our design team will help you build an engaging
                   product easily and quickly in accordance with the latest
@@ -228,11 +229,9 @@ class Services extends Component {
                   style={"card4" !== activeCard ? { display: "none" } : {}}
                   className={classes.subtitle}
                 >
-                  4Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
+                  We can provide You with the team of experienced developers who
+                  will meet the requirements of the particular project and allow
+                  to bring the services to our remote customers.
                 </p>
               </Hidden>
             </Grid>
@@ -270,11 +269,9 @@ class Services extends Component {
               </Paper>
               <Hidden mdUp>
                 <p className={classNames(classes.subtitle, classes.mdUp)}>
-                  1Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
+                  We deliver our clients a variety of web development services
+                  using the latest and proven web technologies. That's why we
+                  can perfectly fit the client's requirements.
                 </p>
               </Hidden>
             </Grid>
@@ -303,11 +300,10 @@ class Services extends Component {
               </Paper>
               <Hidden mdUp>
                 <p className={classNames(classes.subtitle, classes.mdUp)}>
-                  2Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
+                  We offer customized Blockchain solutions, ICO services,
+                  consulting for your business security and growth. No matter
+                  what you need, multi-currency transactions or ICO campaign,
+                  you’re at the right place.
                 </p>
               </Hidden>
             </Grid>
@@ -339,7 +335,7 @@ class Services extends Component {
               </Paper>
               <Hidden mdUp>
                 <p className={classNames(classes.subtitle, classes.mdUp)}>
-                  3Want to build your product with a team that establishes a
+                  Want to build your product with a team that establishes a
                   clear design process, meets deadlines, and delivers a spot-on
                   end result? Our design team will help you build an engaging
                   product easily and quickly in accordance with the latest
@@ -377,11 +373,9 @@ class Services extends Component {
               </Paper>
               <Hidden mdUp>
                 <p className={classNames(classes.subtitle, classes.mdUp)}>
-                  4Want to build your product with a team that establishes a
-                  clear design process, meets deadlines, and delivers a spot-on
-                  end result? Our design team will help you build an engaging
-                  product easily and quickly in accordance with the latest
-                  trends and technologies.
+                  We can provide You with the team of experienced developers who
+                  will meet the requirements of the particular project and allow
+                  to bring the services to our remote customers.
                 </p>
               </Hidden>
             </Grid>

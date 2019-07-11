@@ -76,6 +76,8 @@ const styles = theme => ({
   },
   linkScroll: {
     textAlign: "center",
+    boxSizing: "border-box",
+    transition: "border .5s",
     color: "white",
     fontSize: "17px",
     fontWeight: "400",
@@ -100,17 +102,10 @@ const styles = theme => ({
     backgroundImage: `url(${devimaGrey})`
   },
   deveemaIcon: {
+    height: "30px",
     marginTop: "30px",
     marginLeft: "0",
-    width: "103px",
-    height: "32px",
     display: "inline-block",
-    backgroundSize: "contain",
-    backgroundRepeatX: "no-repeat",
-    backgroundRepeatY: "no-repeat",
-    backgroundPositionX: "center",
-    backgroundPositionY: "center",
-    boxSizing: "boder-box",
     "@media (max-width: 959px)": {
       marginLeft: "20px"
     }
@@ -132,7 +127,8 @@ class AppBar extends Component {
     if (window.pageYOffset >= header.offsetHeight + 50) {
       header.classList.add("hidden");
     }
-    if (window.pageYOffset >= services.offsetTop - 100) {
+    // if (window.pageYOffset >= services.offsetTop - 100) {
+    if (window.pageYOffset >= 200) {
       header.classList.add("fixed");
       this.setState({
         fixed: true
@@ -202,15 +198,13 @@ class AppBar extends Component {
         <Container style={{ position: "relative", height: "100%" }}>
           <div onClick={this.openClick} className={classes.menuButton}>
             <FontAwesomeIcon
-              style={{ color: fixed ? "black" : "#ffffff" }}
+              style={{ color: fixed ? "#5535b8" : "#ffffff" }}
               icon="align-justify"
             />
           </div>
-          <div
-            className={classNames(classes.deveemaIcon, {
-              [classes.devimaGrey]: fixed,
-              [classes.devimaWhite]: !fixed
-            })}
+          <img
+            src={fixed ? devimaGrey : devimaWhite}
+            className={classes.deveemaIcon}
           />
           <nav
             id="links"

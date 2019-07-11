@@ -81,13 +81,7 @@ const styles = theme => ({
     margin: `auto ${theme.default.space * 2}px 0`
   },
   link: {
-    backgroundPositionX: "center",
-    backgroundRepeatX: "no-repeat",
-    backgroundRepeatY: "no-repeat",
-    boxSizing: "boder-box",
-    width: "50px",
-    height: "18px",
-    marginTop: theme.default.space * 3
+    margin: `${theme.default.space * 3}px auto 0`
   },
   bodyContent: {
     height: "max-content",
@@ -235,9 +229,30 @@ class Home extends Component {
             <div className={classes.bodyHome}>
               <Hidden xsDown>
                 <ul className={classes.bodyLinks}>
-                  <li className={classNames(classes.link, classes.fb)} />
-                  <li className={classNames(classes.link, classes.up)} />
-                  <li className={classNames(classes.link, classes.ln)} />
+                  <li className={classes.link}>
+                    <a
+                      target="_blank"
+                      href="https://www.facebook.com/DevimaSolutions"
+                    >
+                      <img src={FB} />
+                    </a>
+                  </li>
+                  <li className={classes.link}>
+                    <a
+                      target="_blank"
+                      href="https://www.upwork.com/o/companies/_~012ce16d31fde250a8/"
+                    >
+                      <img src={UP} />
+                    </a>
+                  </li>
+                  <li className={classes.link}>
+                    <a
+                      target="_blank"
+                      href="https://www.linkedin.com/company/devima-solutions/"
+                    >
+                      <img src={LN} />
+                    </a>
+                  </li>
                 </ul>
               </Hidden>
               <div className={classes.bodyContent}>

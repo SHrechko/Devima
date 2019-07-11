@@ -37,7 +37,7 @@
   position: fixed;
   top: 0;
   opacity: 1;
-  transition: opacity 0.5s linear;
+  transition: opacity 0.2s linear;
   box-shadow: 5px 10px 30px rgba(41, 26, 204, 0.12);
   background-color: #ffffff;
 }

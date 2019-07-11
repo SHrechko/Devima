@@ -36,13 +36,7 @@ const styles = {
     "@media screen and (min-width: 960px)": { left: "calc(50% - 3px)" },
     "@media screen and (max-width: 959px)": {
       left: " ",
-      right: "5%"
-    },
-    "@media screen and (max-width: 800px)": {
-      right: "4.5%"
-    },
-    "@media screen and (max-width: 650px)": {
-      right: "3.5%"
+      right: "20px"
     }
   },
   circle: {
@@ -109,11 +103,13 @@ const styles = {
     color: "#ffffff",
     fontSize: "55px",
     fontWeight: "400",
-    marginTop: "35px",
+    margin: 0,
+    padding: "50px 0 20px",
     "@media (max-width: 959px)": {
       fontSize: "45px"
     },
     "@media (max-width: 599px)": {
+      padding: "29px 0",
       fontSize: "25px"
     }
   },
@@ -129,22 +125,26 @@ const styles = {
   },
   aboutUsContent: {
     position: "relative",
-    backgroundColor: "#ffffff",
-    padding: "10px 35px"
+    padding: "10px 35px",
+    display: "block !important",
+    // width: "90%",
+    // height: "100%",
+    margin: "0 auto"
   },
   statistic: {
     // position: "relative",
-
-    paddingTop: "50px",
-    paddingBottom: "80px"
-    // "@media (max-width: 767px)": {
-    //   maxWidth: "700px",
-    //   flexWrap: "wrap",
-    //   margin: "0 auto",
-    //   paddingTop: "25px"
-    // }
+    padding: "50px 0 80px",
+    "@media (max-width: 599px)": {
+      padding: "20px 0"
+    }
   },
   statisticBlock: {
+    "&.MuiGrid-item": {
+      "@media (min-width: 600px) and (max-width: 959px)": {
+        marginTop: "30px"
+      }
+    },
+
     "@media (min-width: 960px)": {
       "&:not(:last-child)": {
         borderRight: "1px solid #ededed"
@@ -181,6 +181,8 @@ const styles = {
     }
   },
   statisticNumbers: {
+    margin: 0,
+    padding: "40px 0",
     width: "max-content",
     position: "relative",
     backgroundImage:
@@ -193,30 +195,39 @@ const styles = {
     letterSpacing: "-1.5px",
     lineHeight: "29px",
     minHeight: "39px",
-    "@media (max-width: 579px)": {
-      margin: "20px 10px 20px 10px"
+    "@media (max-width: 599px)": {
+      padding: "20px 10px 20px 10px"
     }
   },
   carousel: {
-    height: "250px",
+    height: "150px",
     width: "100%",
     borderRadius: "5px",
     "& .slick-slide": {
       borderRadius: "5px"
     },
     "& .MuiPaper-root": {
-      width: "calc(100% - 70px) !important",
-      height: "calc(100% - 20px)"
+      width: "90% !important",
+      height: "100%"
     },
-    "& div": {
-      height: "250px",
-      width: "100%"
-    },
-    "@media (min-width: 450px)": {
+    "& > div": {
+      boxSizing: "border-box",
+      height: "100% !important",
+      width: "100%",
       "& div": {
-        height: "170px"
-      },
-      height: "170px"
+        width: "100%",
+        boxSizing: "border-box",
+        height: "100%"
+      }
+    },
+    "@media (max-width: 500px)": {
+      height: "185px"
+    },
+    "@media (max-width: 430px)": {
+      height: "210px"
+    },
+    "@media (max-width: 370px)": {
+      height: "250px"
     }
   },
   dotsClass: {
@@ -233,6 +244,11 @@ const styles = {
     }
   },
   mdGrid: {
+    "&.MuiGrid-container": {
+      width: "550px",
+      margin: "0 auto"
+    },
+
     "& > *": {
       paddingTop: "20px",
       paddingBottom: "20px"

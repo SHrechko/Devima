@@ -25,33 +25,36 @@ import Slider from "react-slick";
 
 const styles = theme => ({
   title: {
-    paddingTop: "29px",
+    margin: 0,
+    padding: "50px 0",
     color: "#5535b8",
     fontSize: "55px",
     fontWeight: "400",
-    "@media (max-width: 1023)": {
+    "@media (max-width: 959px)": {
       fontSize: "45px"
     },
     "@media (max-width: 599px)": {
+      padding: "25px 0",
       fontSize: "25px"
     }
   },
   ourLeadershipTitle: {
-    marginTop: "75px",
-    marginBottom: "30px",
-    "@media (max-width: 1023)": {
+    margin: "0",
+    padding: "50px 0",
+    "@media (max-width: 959зч)": {
       fontSize: "45px"
     },
     "@media (max-width: 599px)": {
+      padding: "29px 0",
       fontSize: "25px"
     }
   },
   carousel: {
-    marginTop: "62px",
+    marginTop: 0,
     marginBottom: "75px",
     minWidth: "250px",
-    "@media (max-width: 767px)": {
-      margin: "52px auto 65px"
+    "@media (max-width: 959px)": {
+      margin: "0 auto 65px"
     },
     "& > div > div": {
       position: "relative",
@@ -61,10 +64,17 @@ const styles = theme => ({
         position: "relative",
         height: "100%",
         margin: "0 20px",
-        "@media (max-width: 767px)": {
+        "@media (max-width: 959px)": {
           margin: "0 15px",
           minWidth: "240px"
         }
+      }
+    }
+  },
+  carouselLeaders: {
+    "& > div": {
+      "@media (max-width: 599px)": {
+        paddingLeft: "0 !important"
       }
     }
   },
@@ -81,9 +91,6 @@ const styles = theme => ({
     }
   },
   photo: {
-    backgraund: "gray",
-    width: "80px",
-    height: "60px",
     marginRight: "9px"
   },
   carouselBlock: {
@@ -126,10 +133,12 @@ const styles = theme => ({
       color: "#4a4a4a",
       fontSize: "22px",
       fontWeight: "400",
-      fontHeight: "24px",
-      letterSpacing: "-0.83px",
       lineHeight: "29px",
-      margin: 0
+      margin: 0,
+      "@media (max-width: 399px)": {
+        fontSize: "20px",
+        lineHeight: "20px"
+      }
     },
     "& > p": {
       margin: "5px 0 0",
@@ -138,7 +147,10 @@ const styles = theme => ({
       fontWeight: "400",
       letterSpacing: "-0.6px",
       lineHeight: "24px",
-      paddingRight: "10px"
+      "@media (max-width: 400px)": {
+        fontSize: "14px",
+        lineHeight: "22px"
+      }
     }
   },
   bodyText: {
@@ -206,7 +218,7 @@ const styles = theme => ({
     fontWeight: "900"
   },
   leadershipSub: {
-    marginTop: "0",
+    marginTop: "5px",
     color: "#5535b8",
     fontSize: "14px",
     fontWeight: "500"
@@ -325,11 +337,11 @@ class Testimonials extends Component {
     var settingsLeadership = {
       dotsClass: classNames("slick-dots", classes.dotsClass),
       adaptiveHeight: true,
-      className: classes.carousel,
+      className: classNames(classes.carousel, classes.carouselLeaders),
       centerMode: true,
       centerPadding: "20%",
       arrows: false,
-      dots: true,
+      dots: false,
       // autoplay: true,
       infinite: true,
       speed: 500,
@@ -337,9 +349,15 @@ class Testimonials extends Component {
       slidesToScroll: 1,
       responsive: [
         {
-          breakpoint: 449,
+          breakpoint: 600,
           settings: {
-            centerPadding: 0
+            centerPadding: "17%"
+          }
+        },
+        {
+          breakpoint: 450,
+          settings: {
+            centerMode: false
           }
         }
       ]
@@ -418,6 +436,8 @@ class Testimonials extends Component {
                     src={client.img}
                     className={classes.photo}
                     alt={client.name}
+                    width="105px"
+                    height="75px"
                   />
                   <div className={classes.headingText}>
                     <h3>{client.name}</h3>
