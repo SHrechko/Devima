@@ -40,7 +40,7 @@ const styles = theme => ({
   },
   subtitle: {
     minHeight: "96px",
-    margin: "120px 0 0",
+    margin: "120px 0 30px",
     color: "#9b9b9b",
     fontSize: "16px",
     fontWeight: "400",
@@ -157,6 +157,12 @@ const styles = theme => ({
   },
   gridItem: {
     minHeight: "428px"
+  },
+  cardImg: {
+    display: "none"
+  },
+  visible: {
+    display: "block"
   }
 });
 
@@ -252,8 +258,18 @@ class Services extends Component {
                 onClick={this.setActiveCard}
               >
                 <img
-                  className={classes.cardImg}
-                  src={mdWidth && activeCard === "card1" ? WebDevWhite : WebDev}
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: mdWidth && activeCard === "card1"
+                  })}
+                  src={WebDevWhite}
+                  width="100px"
+                  alt="Web Development"
+                />
+                <img
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: !mdWidth || activeCard !== "card1"
+                  })}
+                  src={WebDev}
                   width="100px"
                   alt="Web Development"
                 />
@@ -284,9 +300,19 @@ class Services extends Component {
                 onClick={this.setActiveCard}
               >
                 <img
-                  className={classes.cardImg}
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: mdWidth && activeCard === "card2"
+                  })}
+                  src={MobileWhite}
                   width="100px"
-                  src={mdWidth && activeCard === "card2" ? MobileWhite : Mobile}
+                  alt="Mobile development"
+                />
+                <img
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: !mdWidth || activeCard !== "card2"
+                  })}
+                  src={Mobile}
+                  width="100px"
                   alt="Mobile development"
                 />
                 <ul className={classes.cardList}>
@@ -316,13 +342,19 @@ class Services extends Component {
                 onClick={this.setActiveCard}
               >
                 <img
-                  className={classes.cardImg}
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: mdWidth && activeCard === "card3"
+                  })}
+                  src={UxUiDesignWhite}
                   width="100px"
-                  src={
-                    mdWidth && activeCard === "card3"
-                      ? UxUiDesignWhite
-                      : UxUiDesign
-                  }
+                  alt="Ux/Ui Design"
+                />
+                <img
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: !mdWidth || activeCard !== "card3"
+                  })}
+                  src={UxUiDesign}
+                  width="100px"
                   alt="Ux/Ui Design"
                 />
                 <ul className={classes.cardList}>
@@ -352,13 +384,19 @@ class Services extends Component {
                 onClick={this.setActiveCard}
               >
                 <img
-                  className={classes.cardImg}
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: mdWidth && activeCard === "card4"
+                  })}
+                  src={DedicatedTeamWhite}
                   width="100px"
-                  src={
-                    mdWidth && activeCard === "card4"
-                      ? DedicatedTeamWhite
-                      : DedicatedTeam
-                  }
+                  alt="Dedicated team"
+                />
+                <img
+                  className={classNames(classes.cardImg, {
+                    [classes.visible]: !mdWidth || activeCard !== "card4"
+                  })}
+                  src={DedicatedTeam}
+                  width="100px"
                   alt="Dedicated team"
                 />
                 <ul className={classes.cardList}>
