@@ -421,7 +421,7 @@ class Testimonials extends Component {
     return (
       <section id="testimonials">
         <Container>
-          <h2 className={classes.title}>Testimonials</h2>
+          <h2 className={classes.title}>What our clients say</h2>
         </Container>
         <Slider {...settings}>
           {clients.map(client => (

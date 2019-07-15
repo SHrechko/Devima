@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import injectSheet from "react-jss";
 import classNames from "classnames";
-import tmpImg from "../../assets/tmpImg.jpg";
 
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Hidden from "@material-ui/core/Hidden";
 import Box from "@material-ui/core/Box";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+
+import Triangle from "./Triangle";
 
 import DescriptionImg from "../../assets/Mockup-updated.png";
 
@@ -30,7 +29,7 @@ const categoryTabs = [
 
 const tabs = [
   {
-    id: "0",
+    id: 0,
     value:
       "The main goal of the Impresso is to build the next " +
       "generation of career data. The Impresso application " +
@@ -43,13 +42,13 @@ const tabs = [
       "SMART CV’s information as all personal data will be " +
       "validated through the blockchain."
   },
-  { id: "1", value: "second" },
-  { id: "2", value: "third" }
+  { id: 1, value: "second" },
+  { id: 2, value: "third" }
 ];
 
 const styles = theme => ({
   section: {
-    paddingBottom: "75px"
+    paddingBottom: "30px"
   },
   title: {
     color: "#5535b8",
@@ -186,6 +185,57 @@ const styles = theme => ({
   activeImpressoTab: {
     color: "#4a4a4a !important",
     fontWeight: "700 !important"
+  },
+  triangleList: {
+    width: "40%",
+    "& > *": {
+      position: "relative"
+    },
+    "& p": {
+      marginLeft: "10px",
+      "@media (max-width: 599px)": {
+        fontSize: "14px"
+      }
+    }
+  },
+  line: {
+    height: "3px",
+    position: "absolute",
+    top: "50%",
+    left: "calc(30% + 60px)",
+    right: 0,
+    backgroundColor: "#7d0cda",
+    "&:after": {
+      boxSizing: "border-box",
+      content: "''",
+      width: "20px",
+      height: "20px",
+      position: "absolute",
+      right: 0,
+      backgroundColor: "inherit",
+      borderRadius: "50%",
+      top: "-10px"
+    }
+  },
+  trianglesParent1: {
+    left: "30%",
+    "& > div": {
+      transform: "rotate(40deg) skewX(-30deg) scale(1,.866) translate(105%)"
+    }
+  },
+  trianglesParent2: {
+    left: "0",
+    "& > div": {
+      transform:
+        "rotate(70deg) skewX(-30deg) scale(1,.866) translate(85%, -45%)"
+    }
+  },
+  trianglesParent3: {
+    left: "10%",
+    "& > div": {
+      transform:
+        "rotate(95deg) skewX(-30deg) scale(1,.866) translate(45%, -80%)"
+    }
   }
 });
 
@@ -294,15 +344,101 @@ class Portfolio extends Component {
                     </Grid>
                   </Grid>
                   {tabs.map((tab, index) => (
-                    <p
-                      key={tab.id}
+                    <div
                       style={{
                         display: showTab === index ? "block" : "none"
                       }}
-                      className={classes.tabsText}
                     >
-                      {tab.value}
-                    </p>
+                      {tab.id === 0 && (
+                        <p key={tab.id} className={classes.tabsText}>
+                          {tab.value}
+                        </p>
+                      )}
+                      {tab.id === 1 && (
+                        <Grid container className={classes.triangleList}>
+                          <Grid item xs={4}>
+                            <Triangle parentClass={classes.trianglesParent1}>
+                              1
+                            </Triangle>
+                            <Hidden xsDown>
+                              <div className={classes.line} />
+                            </Hidden>
+                          </Grid>
+                          <Grid item xs={8}>
+                            <p>
+                              Devima team designed, developed and tested
+                              Impesso’s multiple software products;
+                            </p>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Triangle parentClass={classes.trianglesParent2}>
+                              2
+                            </Triangle>
+                            <Hidden xsDown>
+                              <div
+                                style={{ left: "60px" }}
+                                className={classes.line}
+                              />
+                            </Hidden>
+                          </Grid>
+                          <Grid item xs={8}>
+                            <p>
+                              Introduced a lot of features and wide
+                              functionality with the modern tech stack;
+                            </p>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Triangle parentClass={classes.trianglesParent3}>
+                              3
+                            </Triangle>
+                            <Hidden xsDown>
+                              <div
+                                style={{ left: "calc(10% + 60px)" }}
+                                className={classes.line}
+                              />
+                            </Hidden>
+                          </Grid>
+                          <Grid item xs={8}>
+                            <p>
+                              Delivered a solution which helps Impresso system
+                              uses Blockchain as trustful and permanent data
+                              storage;
+                            </p>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Triangle parentClass={classes.trianglesParent2}>
+                              4
+                            </Triangle>
+                            <Hidden xsDown>
+                              <div
+                                style={{ left: "60px" }}
+                                className={classes.line}
+                              />
+                            </Hidden>
+                          </Grid>
+                          <Grid item xs={8}>
+                            <p>
+                              Created simple and attractive UX/UI design for
+                              mobile and web application of Impresso;
+                            </p>
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Triangle parentClass={classes.trianglesParent1}>
+                              5
+                            </Triangle>
+                            <Hidden xsDown>
+                              <div className={classes.line} />
+                            </Hidden>
+                          </Grid>
+                          <Grid item xs={8}>
+                            <p>
+                              Performed a number of integrations and migrations
+                              to guarantee the smooth performance of all.
+                            </p>
+                          </Grid>
+                        </Grid>
+                      )}
+                    </div>
                   ))}
                 </Box>
               ))}
