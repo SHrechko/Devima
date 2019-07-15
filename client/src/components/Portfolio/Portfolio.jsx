@@ -187,7 +187,6 @@ const styles = theme => ({
     fontWeight: "700 !important"
   },
   triangleList: {
-    width: "40%",
     "& > *": {
       position: "relative"
     },
@@ -196,6 +195,9 @@ const styles = theme => ({
       "@media (max-width: 599px)": {
         fontSize: "14px"
       }
+    },
+    "@media (min-width: 960px)": {
+      paddingRight: "20px"
     }
   },
   line: {
@@ -345,6 +347,7 @@ class Portfolio extends Component {
                   </Grid>
                   {tabs.map((tab, index) => (
                     <div
+                      key={tab.id}
                       style={{
                         display: showTab === index ? "block" : "none"
                       }}
