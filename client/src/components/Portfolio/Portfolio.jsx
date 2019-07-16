@@ -77,30 +77,22 @@ const styles = theme => ({
   },
   subOne: {
     margin: "5px 0 0",
-    fontSize: "16px",
-    fontWeight: "600",
-    marginRight: "10px",
-    "@media (max-width: 959px)": {
-      fontSize: "15px"
-    }
+    marginRight: "10px"
   },
-  subSecond: {
-    lineHeight: "1.4",
-    fontSize: "15px",
-    fontWeight: "200",
-    "@media (max-width: 959px)": {
-      fontSize: "14px"
-    }
+  sub: {
+    fontSize: "15px"
   },
   tabsHead: {
+    "&.MuiGrid-spacing-xs-2": {
+      width: "calc(100% + 16px)",
+      margin: "-8px",
+      marginTop: "8px"
+    },
     "& > div": {
-      fontSize: "20px",
+      fontSize: "16px",
       fontWeight: "500",
       color: "#adb2b3",
-      cursor: "pointer",
-      "@media (max-width: 959px)": {
-        fontSize: "16px"
-      }
+      cursor: "pointer"
     }
   },
   tabsText: {
@@ -124,9 +116,22 @@ const styles = theme => ({
     height: "80px"
   },
   tabsBody: {
-    minHeight: "500px",
+    minHeight: "520px",
+    "@media (max-width: 1265px)": {
+      minHeight: "595px"
+    },
     "@media (max-width: 959px)": {
-      paddingTop: "40px"
+      paddingTop: "40px",
+      minHeight: "570px"
+    },
+    "@media (max-width: 762px)": {
+      minHeight: "620px"
+    },
+    "@media (max-width: 500px)": {
+      minHeight: "700px"
+    },
+    "@media (max-width: 360px)": {
+      minHeight: "800px"
     }
   },
   tabLinks: {
@@ -187,17 +192,19 @@ const styles = theme => ({
     fontWeight: "700 !important"
   },
   triangleList: {
+    marginTop: "20px",
     "& > *": {
       position: "relative"
     },
     "& p": {
+      margin: "14px 0 14px 10px",
       marginLeft: "10px",
       "@media (max-width: 599px)": {
         fontSize: "14px"
       }
     },
     "@media (min-width: 960px)": {
-      paddingRight: "20px"
+      paddingRight: "32px"
     }
   },
   line: {
@@ -205,7 +212,7 @@ const styles = theme => ({
     position: "absolute",
     top: "50%",
     left: "calc(30% + 60px)",
-    right: 0,
+    right: "2px",
     backgroundColor: "#7d0cda",
     "&:after": {
       boxSizing: "border-box",
@@ -213,30 +220,28 @@ const styles = theme => ({
       width: "20px",
       height: "20px",
       position: "absolute",
-      right: 0,
+      right: "-2px",
       backgroundColor: "inherit",
       borderRadius: "50%",
-      top: "-10px"
+      top: "-9px"
     }
   },
   trianglesParent1: {
     left: "30%",
-    "& > div": {
-      transform: "rotate(40deg) skewX(-30deg) scale(1,.866) translate(105%)"
+    "& > svg": {
+      transform: "translate(-45%, -50%) rotate(40deg)"
     }
   },
   trianglesParent2: {
     left: "0",
-    "& > div": {
-      transform:
-        "rotate(70deg) skewX(-30deg) scale(1,.866) translate(85%, -45%)"
+    "& > svg": {
+      transform: "translate(-45%, -50%) rotate(70deg)"
     }
   },
   trianglesParent3: {
     left: "10%",
-    "& > div": {
-      transform:
-        "rotate(95deg) skewX(-30deg) scale(1,.866) translate(45%, -80%)"
+    "& > svg": {
+      transform: "translate(-45%, -45%) rotate(95deg)"
     }
   }
 });
@@ -268,7 +273,7 @@ class Portfolio extends Component {
     const { showTab, activeCategory } = this.state;
     return (
       <Container className={classes.section} component="section" id="portfolio">
-        <h2 className={classes.title}>Portfolio</h2>
+        <h2 className={classes.title}>Featured cases</h2>
         <Paper elevation={4} className={classes.paper}>
           <Grid container>
             <Hidden mdUp>
@@ -309,11 +314,15 @@ class Portfolio extends Component {
                     >
                       Impresso {item.text}
                     </Grid>
-                    <Grid component="sub" item className={classes.subOne}>
+                    <Grid
+                      component="sub"
+                      item
+                      className={classNames(classes.sub, classes.subOne)}
+                    >
                       Indastry
                     </Grid>
-                    <Grid component="sub" item className={classes.subSecond}>
-                      Lorem ipsum
+                    <Grid component="sub" item className={classes.sub}>
+                      Social network
                     </Grid>
                   </Grid>
                   <Grid container spacing={2} className={classes.tabsHead}>
