@@ -217,8 +217,8 @@ const styles = theme => ({
     "&:after": {
       boxSizing: "border-box",
       content: "''",
-      width: "20px",
-      height: "20px",
+      width: "21px",
+      height: "21px",
       position: "absolute",
       right: "-2px",
       backgroundColor: "inherit",
@@ -241,7 +241,7 @@ const styles = theme => ({
   trianglesParent3: {
     left: "10%",
     "& > svg": {
-      transform: "translate(-45%, -45%) rotate(95deg)"
+      transform: "translate(-43%, -45%) rotate(95deg)"
     }
   }
 });

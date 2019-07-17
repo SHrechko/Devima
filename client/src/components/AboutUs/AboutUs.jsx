@@ -253,6 +253,12 @@ const styles = {
       paddingTop: "20px",
       paddingBottom: "20px"
     }
+  },
+  approachBox: {
+    "@media (min-width: 960px)": {
+      width: "80%",
+      margin: "auto"
+    }
   }
 };
 
@@ -289,7 +295,7 @@ class AboutUs extends Component {
         <Container maxWidth={false} id="about_us" className={classes.body}>
           <Container style={{ padding: 0 }}>
             <h2 className={classes.aboutUsTitle}>Our Approach</h2>
-            <div>
+            <div className={classes.approachBox}>
               <Hidden smUp>
                 <Slider {...settings}>
                   <Paper className={classes.aboutUsContent}>

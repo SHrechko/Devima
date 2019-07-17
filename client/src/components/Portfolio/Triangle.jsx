@@ -35,7 +35,7 @@ export default injectSheet(styles)(({ classes, parentClass, children }) => {
       <span className={classes.number}>{children}</span>
       <svg width="55" height="55" className={classes.triangle}>
         <polygon
-          points="27.5 3,52 45,3 45"
+          points="27.5 3,52 45.8,3 45.8"
           fill="rgba(0, 0, 0, 0)"
           stroke="#7d0cda"
           stroke-width="3"
